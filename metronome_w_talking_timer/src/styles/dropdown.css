@@ -1,0 +1,155 @@
+::-webkit-scrollbar {
+  width: none !important;
+}
+
+.datalist {
+  --opt-even: #eee;
+  --opt-odd: #dfdfdf;
+}
+  
+.option,
+.input {
+  width: 100%;
+  padding: .5em .6em;
+  outline: none;
+  font-size: inherit;
+  color: var(--text-color);
+}
+
+.input {
+  width: 100%;
+  background-color: var(--input-bkground);
+  border: .11em solid var(--text-color);
+  border-radius: .4em;
+  cursor: pointer;
+}
+
+.option {
+  width: 100%;
+  margin: .2em auto;
+  padding: .5em .7em;
+  cursor: pointer;
+  box-shadow: 0 0 .4em .2em transparent;
+}
+
+/*  This is for the sound dropdown  */
+.sound .option {
+  padding: 0;
+}
+
+.soundOption span {
+  padding: .5em .7em;
+  white-space: nowrap;
+}
+
+.option:hover,
+.datalist .option:nth-child(even):hover {
+  background-color: var(--opt-hover);
+  box-shadow: 0 0 .3em .1em var(--opt-hover);
+}
+
+/* .datalist .option:nth-child(even) {
+  background-color: var(--opt-even);
+}
+
+.datalist .option:nth-child(odd) {
+  background-color: var(--opt-odd);
+} */
+
+.show .input {
+  border-radius: .45em .45em 0 0;
+}
+
+.datalist-container {
+  --datalist-maxHeight: 17.5em;
+  --datalist-height: var(--datalist-maxHeight); 
+  width: 100%;
+  height: 0;
+  max-height: var(--datalist-height);
+  overflow: hidden;
+  border-radius: 0 0 .45em .45em;
+  z-index: -10;
+  transition: 0s linear;
+  border-bottom: none;
+}
+
+.show .datalist-container.sound::-webkit-scrollbar-track {
+  width: none !important;
+  scrollbar-width: 0 !important;
+}
+
+.dark .show .datalist-container.sound::-webkit-scrollbar-track {
+  width: none !important;
+  scrollbar-width: 0 !important;
+}
+
+.show .datalist-container.sound {
+  color: red !important;
+  border-bottom: .15em solid var(--text-color);
+  scrollbar-width: 0;
+  overflow-y: scroll;
+}
+
+
+.datalist-container.sound::-webkit-scrollbar,
+.datalist-container::-webkit-scrollbar {
+  width: none !important;
+}
+  
+.show .datalist-container {
+  position: absolute;
+  height: var(--datalist-height);
+  transition: .3s linear;
+  scrollbar-width: none;
+  z-index: 1000;
+}
+  
+.datalist {
+  padding: .65em .45em;
+  position: relative;
+  display: block;
+  transform: translateY(-100%);
+  transition: transform 0s linear;
+  border: .11em solid var(--text-color);
+  border-top: none;
+  border-radius: 0 0 .47em .47em;
+  background-color: var(--background-color);
+  pointer-events: all;
+  z-index: 10;
+}
+
+.show .datalist {
+  display: block;
+  transform: translateY(0);
+}
+
+
+.datalist-container {
+  --datalist-maxHeight: 17.5em;
+  --datalist-height: var(--datalist-maxHeight); 
+
+  
+  width: 100%;
+  height: 0;
+  max-height: var(--datalist-height);
+  overflow: hidden;
+  border-radius: 0 0 .47em .47em;
+  pointer-events: none;
+  z-index: -10;
+  transition: 0s linear;
+}
+
+  
+
+
+.controls {
+  display: flex;
+  /* flex-wrap: wrap; */
+  justify-content: space-evenly;
+  margin: 0 auto;
+}
+
+    
+.placeHolder {
+  opacity: .5;
+}

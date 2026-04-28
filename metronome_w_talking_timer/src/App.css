@@ -1,0 +1,119 @@
+.App {
+  position: relative;
+  height: 44em;
+  width: 40em;
+  margin: 3em auto;
+  --text-color: #2e3440;
+  --background-color: white;
+  --opt-hover: hsla(0, 0%, 0%, .1);
+  transition: .3s;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  background-color: var(--background-color);
+  border: .1em dotted var(--background-color);
+}
+
+.App.dark {
+  --text-color: white;
+  --background-color: #2e3440;
+  --opt-hover: hsla(0, 0%, 100%, .2);
+  
+  color: white;
+  scrollbar-color: rgb(210, 210, 210) rgb(46, 54, 69) !important;
+}
+
+#listBtn,
+#lightModeBtn {
+  position: absolute;
+  top: .3em;
+  right: .5em;
+  height: 2em;
+  filter: brightness(0);
+  z-index: 1000;
+  cursor: pointer;
+}
+
+#listBtn {
+  top: .5em;
+  left: .7em;
+  height: 1.5em;
+  transform: rotateY(180deg);
+}
+
+.dark #listBtn,
+.dark #lightModeBtn {
+  filter: brightness(100%)
+}
+
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1em;
+  width: 18.5em;
+
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+#controls {
+  display: flex;
+  height: 15.2em;
+  width: fit-content;
+  margin: 0 auto .7em;
+
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+.form-container {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+
+.disable {
+  opacity: .3;
+  pointer-events: none;
+}
+
+.hideThis {
+  opacity: 0;
+  position: absolute;
+  pointer-events: none;
+  z-index: -10000;
+}
+
+/*
+          Records Page
+*/
+
+main {
+  width: fit-content;
+  margin: auto;
+}
+
+.sectionTitle {
+  text-decoration: underline;
+  color: gold;
+  margin-top: 1em;
+}
+
+.exerciseTitle {
+  text-decoration: underline;
+  color: lightgreen;
+  margin: .5em 0 .25em;
+}
+
+ul.data {
+  margin-bottom: .2em;
+}

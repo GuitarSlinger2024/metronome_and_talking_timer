@@ -1,0 +1,38 @@
+header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2em;
+}
+
+h1 span {
+  font-size: 1.06em;
+}
+
+h1 {
+  position: relative;
+  display: inline;
+  margin: 0 auto;
+  width: fit-content;
+  text-decoration: underline;
+}
+
+h1:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: .07em;
+  background-color: rgb(186, 186, 186);
+}
+
+header h4:not(:last-child) {
+  margin: .4em;
+}
+
+header h4:last-child {
+  margin: .5em 0 .4em;
+}

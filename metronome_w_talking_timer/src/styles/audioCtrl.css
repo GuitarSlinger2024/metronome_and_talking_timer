@@ -1,0 +1,140 @@
+.soundOption {
+  display: flex;
+  justify-content: space-between;
+}
+
+.soundOption span {
+  display: flex;
+  cursor: pointer;
+}
+
+.soundOption span:nth-child(1) {
+  width: 80%;
+}
+
+.soundOption span:nth-child(2) {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 2.8em;
+  padding: 0;
+}
+
+.soundOption img {
+  position: absolute;
+  height: .9em;
+  filter: brightness(.5);
+  right: .9em;
+}
+
+.dark .soundOption img {
+  filter: brightness(.8);
+}
+
+.audioCtrls {
+  font-size: .9em;
+  height: 50%;
+  justify-content: space-around;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  font-size: .84em;
+}
+
+div.checkbox {
+  padding: 0 4em 1em;
+  flex-shrink: 0;
+}
+
+#volumeControl {
+  height: 1em;
+  padding: 0 2em 1em;
+}
+
+#volumeControl {
+  height: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.1em;
+}
+
+#volumeControl p {
+  position: relative;
+  inset-block-start: 1em;
+}
+
+#volumeControl small {
+  display: flex;
+  justify-content: space-between;
+  inline-size: 100%;
+  margin-block-end: .4em;
+}
+
+#volume {
+  position: relative;
+  display: flex;
+  align-items: center;
+  inline-size: 100%;
+  block-size: .25em;
+  background-color: black;
+  flex-shrink: 0;
+  border-radius: .12em;
+  cursor: pointer;
+  --volume-level: 50%;
+}
+
+.dark #volume {
+  background-color: white;
+}
+
+#volume::before,
+#volume::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  width: .9em;
+  height: .9em;
+  left: calc(var(--volume-level) - .25em);
+  pointer-events: none;
+  /* cursor: grab; */
+}
+
+
+#volume::before {
+  background-color: white;
+  border: .21em solid black
+}
+
+.dark #volume::before {
+  background-color: black;
+  border: .21em solid white;
+}
+
+#buttons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+
+button {
+  outline: none;
+  border-width: .02em;
+}
+
+button {
+  display: block;
+  flex-shrink: 0;
+  width: 6.5em;
+  height: max-content;
+  padding: .3em .4em;
+  border-radius: .5em;
+  text-align: center;
+  font-weight: 900;
+  cursor: pointer;
+  font-size: .9em;
+}
+
+

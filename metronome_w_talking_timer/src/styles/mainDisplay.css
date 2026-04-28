@@ -1,0 +1,274 @@
+.welcome {
+  text-align: center;
+  text-wrap: balance;
+}
+
+.welcome h2 {
+  text-decoration: underline;
+}
+
+.welcome p {
+  margin: 1em 0;
+}
+
+#lessonInfoDiv .infoTitle {
+  text-align: center;
+  text-decoration: underline;
+  margin-bottom: 0.7em;
+}
+
+#lessonInfoDiv .lessonDetailsContainer {
+  display: flex;
+  gap: 3em;
+  justify-content: center;
+  position: relative;
+  top: -.7em;
+  width: 90%;
+  height: 9em;
+  margin: auto;
+}
+
+#lessonInfoDiv .lessonDetailsContainer .lessonDetails h5 {
+  margin-left: 2em;
+}
+
+#lessonInfoDiv .lessonLog {
+  text-align: center;
+  width: 15em;
+}
+
+#lessonInfoDiv .lessonLog ul::-webkit-scrollbar-track {
+  width: 0
+}
+
+#lessonInfoDiv .lessonLog li {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  text-align: center;
+  font-size: .83em;
+  margin: 0 auto .3em;
+}
+
+#lessonInfoDiv .lessonLog h5 {
+ margin: auto;
+ width: fit-content;
+}
+
+#lessonInfoDiv .lessonLog span:first-of-type {
+  text-align: left;
+  display: inline-block;
+}
+
+#lessonInfoDiv p {
+  margin: 0.5em 3em 1.5em;
+  text-align: center;
+  text-wrap: balance;
+}
+
+#lessonInfoDiv h4,
+#lessonInfoDiv h5 {
+  margin: 0.5em 1em;
+  white-space: nowrap;
+}
+
+#lessonInfoDiv h5 {
+  text-align: left;
+}
+
+#lessonInfoDiv h4 {
+  text-decoration: underline;
+  text-align: center;
+}
+
+.lessonLog h4 {
+  margin-bottom: 0 !
+}
+
+#lessonInfoDiv ul {
+  height: 9em;
+  scrollbar-width: none;
+  font-weight: bold;
+  overflow-y: auto;
+}
+
+/*  Main Display  */
+
+.canvasContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 95%;
+  margin: 0.3em auto 0.5em;
+  padding: 0.4em;
+  filter: brightness(0);
+  transition: 0.1s;
+}
+
+.noPickDir {
+  margin: -0.9em auto 0.5em !important;
+}
+/* 1.25em */
+.canvasContainer span {
+  display: inline-block;
+  position: relative;
+  width: 2.5em;
+  top: 0.56em;
+  text-align: right;
+  font-style: italic;
+  font-size: 1.25em;
+  font-family: 'Times New Roman', Times, serif;
+  color: var(--text-color);
+}
+
+#canvas {
+  width: calc(100% - 2.6em);
+  flex-shrink: 2;
+}
+
+.dark .canvasContainer {
+  filter: brightness(1);
+}
+
+#description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+  height: 6em;
+  width: fit-content;
+  text-align: center;
+  white-space: nowrap;
+}
+
+#description p {
+  white-space: wrap;
+  text-wrap: balance;
+  margin-top: 0.5em;
+}
+
+#description div {
+  margin: auto;
+  white-space: break-spaces;
+  text-align: center;
+}
+
+#description .shortMsg {
+  margin: auto;
+}
+
+#description .smallText {
+  font-size: 0.9em;
+}
+
+#description h3:first-child {
+  text-decoration: underline;
+}
+
+#description .arrow {
+  position: absolute;
+  top: 5%;
+  width: 2em;
+}
+
+#description .arrowRight {
+  right: 5%;
+}
+
+#description .arrowLeft {
+  left: 5%;
+}
+
+#main-display {
+  position: relative;
+}
+
+#main-display span {
+  font-weight: 100;
+}
+
+.exercise {
+  opacity: 0;
+  pointer-events: none;
+  height: 0.625em;
+}
+
+.exercise.practice {
+  opacity: 1;
+  pointer-events: all;
+  height: fit-content;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  width: 85%;
+  margin: auto;
+  font-weight: 600;
+}
+
+.info span {
+  font-family: Arial, Helvetica, sans-serif;
+  display: inline-block;
+  width: 2.81em;
+  font-weight: 400;
+}
+
+.exercise-description {
+  display: flex;
+  flex-shrink: 0;
+  align-items: flex-end;
+  height: 3em;
+  width: 90%;
+  /* background-color: gray; */
+}
+
+#main-display .info .time span {
+  width: 0.6em;
+  text-align: center;
+}
+
+#main-display .info .time span:first-of-type {
+  margin-left: 0.4em;
+}
+
+#main-display .info .time span.colon {
+  width: 0.4em;
+  font-weight: 700;
+  position: relative;
+  top: -0.13em;
+}
+
+#forwardAndBack {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: fit-content;
+  height: 3em;
+  margin: auto;
+  cursor: pointer;
+  filter: brightness(0);
+}
+
+#forwardAndBack .text {
+  white-space: nowrap;
+}
+
+#forwardAndBack div {
+  height: 70%;
+  flex-shrink: 0;
+}
+
+.dark #forwardAndBack {
+  filter: brightness(1);
+}
+
+#forwardAndBack img {
+  height: 100%;
+  flex-shrink: 0;
+  margin: 0 20%;
+}
+
+#forwardAndBack div:first-child {
+  transform: rotate(180deg);
+}
