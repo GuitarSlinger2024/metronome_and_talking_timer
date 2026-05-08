@@ -23,6 +23,7 @@ function Main() {
   useEffect(() => {
     const isStorageNew = localStorage.getItem('isStorageNew')
     if (!isStorageNew) localStorage.clear()
+    localStorage.setItem('isStorageNew', true)
     const savedMode = localStorage.getItem('pickHandMode')
     setMode(savedMode || 'light')
   }, [])
