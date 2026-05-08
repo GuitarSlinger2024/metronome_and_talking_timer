@@ -21,6 +21,8 @@ function Main() {
   const [showRecords, setShowRecords] = useState(false)
 
   useEffect(() => {
+    const isStorageNew = localStorage.getItem('isStorageNew')
+    if (!isStorageNew) localStorage.clear()
     const savedMode = localStorage.getItem('pickHandMode')
     setMode(savedMode || 'light')
   }, [])
