@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import Header from './Header'
 import LessonCtrls from './LessonCtrls'
 import AudioCtrls from './AudioCtrls'
-import RecordsPage from './RecordsPage'
+import RecordsPage from './records_page/RecordsPage'
 // import Welcome from '../components/Welcome'
 import ExerciseCtrl from './ExerciseCtrl'
 

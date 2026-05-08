@@ -2,8 +2,8 @@
 //      https://www.npmjs.com/package/reactjs-stylesheet#reactjs-stylesheet
 
 import Stylesheet from 'reactjs-stylesheet'
-import whiteCheck from '../_img/check_marks/white.png'
-import blackCheck from '../_img/check_marks/black.png'
+import whiteCheck from '../../_img/check_marks/white.png'
+import blackCheck from '../../_img/check_marks/black.png'
 
 const Checkbox = ({
   label,

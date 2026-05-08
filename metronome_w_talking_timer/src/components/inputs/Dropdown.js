@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
-import { SettingsContext } from '../context/SettingsContext'
-import '../styles/dropdown.css'
+import { SettingsContext } from '../../context/SettingsContext'
+import '../../styles/dropdown.css'
 
 function Dropdown({
   label,

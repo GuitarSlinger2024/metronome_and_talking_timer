@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { SettingsContext } from '../context/SettingsContext'
-import Dropdown from './Dropdown'
+import Dropdown from './inputs/Dropdown'
 import { lessons } from '../lessonData'
 
 function LessonCtrls({ setReady, startLesson }) {

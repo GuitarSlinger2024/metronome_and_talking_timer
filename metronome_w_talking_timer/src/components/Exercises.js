@@ -104,7 +104,7 @@ function Exercises({ pauseLesson, lessonInfo, setStartLesson }) {
   function lessonOver() {
     speechSynthesis.cancel()
     let text
-    if (lessonInfo.numOfExercises === finished.size) {
+    if (lessonInfo.numOfExercises === finished.size || true) {
       text = 'This concludes '
       text += useLongDesc
         ? `${part ? part : section}, lesson ${

@@ -5,9 +5,9 @@ import { SettingsContext } from '../context/SettingsContext'
 import playBtn from '../_img/play-btn.png'
 
 //  Components
-import Dropdown from './Dropdown'
-import Checkbox from './Checkbox'
-import VolumeCtrl from './VolumeCtrl'
+import Dropdown from './inputs/Dropdown'
+import Checkbox from './inputs/Checkbox'
+import VolumeCtrl from './inputs/VolumeCtrl'
 
 function AudioCtrls({
   mode,

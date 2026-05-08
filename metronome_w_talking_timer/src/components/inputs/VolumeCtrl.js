@@ -1,15 +1,15 @@
 import React, { useContext, useEffect } from 'react'
-import { SettingsContext } from '../context/SettingsContext'
-import '../styles/audioCtrl.css'
+import { SettingsContext } from '../../context/SettingsContext'
+import '../../styles/audioCtrl.css'
 
 function VolumeCtrl() {
   const { metronomeVolume, setMetronomeVolume } = useContext(SettingsContext)
-  
+
   useEffect(() => {
     const volumeEl = document.getElementById('volume')
     volumeEl.style.setProperty('--volume-level', metronomeVolume + '%')
   })
-  
+
   function setVolume(e) {
     const volumeEl = document.getElementById('volume')
     var rect = volumeEl.getBoundingClientRect()

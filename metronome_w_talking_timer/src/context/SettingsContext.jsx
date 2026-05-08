@@ -92,18 +92,24 @@ export function SettingsProvider({ children }) {
     'Wednesday',
     'Thursday',
     'Friday',
-    'Saturday'
+    'Saturday',
   ]
+
+  function getHour(hr24) {
+    let hr12 = +hr24 > 12 ? +hr24 - 12 : +hr24 === 0 ? 12 : +hr24
+    return String(hr12)
+  }
 
   function correctTimeFormat(record) {
     const date = new Date(record)
     const dateArray = date.toString().split(' ')
     let time = dateArray[4].split(':')
     time.pop()
-    console.log({time})
+    time[0] = getHour(time[0])
     time = time.join(':')
-    if (time[0] === '0') time = time.slice(1)
-    const string = `${days[new Date().getDay()]}, ${dateArray[1]} ${dateArray[2]} at ${time} ${new Date().getHours() >= 12 ? 'pm' : 'am'}`
+    const string = `${days[new Date(record).getDay()]}, ${dateArray[1]} ${
+      dateArray[2]
+    } at ${time} ${new Date().getHours() >= 12 ? 'pm' : 'am'}`
     return string
   }
 
@@ -133,7 +139,7 @@ export function SettingsProvider({ children }) {
         sounds,
         metronomeVolume,
         setMetronomeVolume,
-        correctTimeFormat
+        correctTimeFormat,
       }}
     >
       {children}
