@@ -17,7 +17,7 @@ function Main() {
   const [mode, setMode] = useState('')
   const [ready, setReady] = useState(false)
   const [startLesson, setStartLesson] = useState(false)
-  const [pauseLesson, setPauseLesson] = useState(false)
+  const [pauseLesson, setPauseLesson] = useState(true)
   const [showRecords, setShowRecords] = useState(false)
 
   useEffect(() => {

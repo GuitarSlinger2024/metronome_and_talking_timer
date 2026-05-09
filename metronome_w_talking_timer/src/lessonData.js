@@ -57,18 +57,27 @@ export const exercises = {
         exercises: [
           [
             'Exercise 1 - Sweep up and down all six strings, one note per beat.',
-            '654321-123456-654321-123456-6543',
-            'd------u------d------u------d------u--',
+            '654321123456',
+            'd-----u-----',
+            '6', // beats per measure
+            '6/4', // time signature
+            '1', // notes per beat
           ],
           [
             'Exercise 2 - Sweep up and down five strings, two notes per beat, three beats per measure. Skip the last half beat.',
-            '54321x-12345x-54321x-12345x-54321',
-            'd----x-u----x-d----x-u----x-d----',
+            '54321x12345x',
+            'd-----u-----',
+            '6',
+            '3/4',
+            '2',
           ],
           [
             'Exercise 3 - Sweep up and down five strings, four notes per beat. Count: 1 - e - & - a - 2 (pause), 3 - e - & - a - 4 (pause)',
-            '54321xxx12345xxx-54321xxx12345xxx',
-            'd----xxxu----xxx-d----xxxu----xxx-d----',
+            '54321xxx12345xxx',
+            'd-------u-------',
+            '16',
+            '4/4',
+            '4',
           ],
         ],
       },
@@ -77,53 +86,83 @@ export const exercises = {
         exercises: [
           [
             'Exercise 1 - Sweep up and down five strings, one note per beat.',
-            '5432112345-5432112345-54321123',
-            'd----u---- e',
+            '5432112345',
+            'd----u----',
+            '5', // beats per measure
+            '5/4', // time signature
+            '1', // notes per beat
           ],
           [
             'Exercise 2 - Pick one note per beat, use inside picking to change directions.',
-            '54321234-54321234-54321234-5432',
-            'ud--du-- e',
+            '54321234',
+            'ud--du--',
+            '4', // beats per measure
+            '4/4', // time signature
+            '1', // notes per beat
           ],
           [
             'Exercise 3 - Pick one note per beat, use outside picking to change directions.',
-            '54321234-54321234-54321234-5432',
-            'd---u--- e',
+            '54321234',
+            'd---u---',
+            '8', // beats per measure
+            '4/4', // time signature
+            '1', // notes per beat
           ],
           [
             "Exercise 4 - Sweep up and down five strings, two notes per beat. Skip the '&' of the 3rd beat.",
-            '54321x-12345x-54321x-12345x-54321',
-            'd----x-u----x e',
+            '54321x12345x',
+            'd-----u-----',
+            '6', // beats per measure
+            '6/4', // time signature
+            '2', // notes per beat
           ],
           [
             'Exercise 5 - Pick two notes per beat. Use inside picking to change directions.',
-            '54321234-54321234-54321234-5432',
-            'ud---u-- e',
+            '54321234',
+            'ud--du--',
+            '8', // beats per measure
+            '4/4', // time signature
+            '1', // notes per beat
           ],
           [
             'Exercise 6 - Pick two notes per beat. Use outside picking to change directions.',
-            '54321234-54321234-54321234-5432',
-            'd---u--- e',
+            '54321234',
+            'd---u---',
+            '8', // beats per measure
+            '4/4', // time signature
+            '1', // notes per beat
           ],
           [
             'Exercise 7 - Sweep up and down five strings, four notes per beat. Count: 1 - e - & - a - 2 - (pause) - 3 - e - & - a - 4.',
-            '54321xxx12345xxx-54321xxx12345xxx',
-            'd----xxxu----xxx e',
+            '54321xxx12345xxx',
+            'd----xxxu----xxx',
+            '16', // beats per measure
+            '4/4', // time signature
+            '1', // notes per beat
           ],
           [
             'Exercise 8 - Pick four notes per beat. Use inside picking to change directions.',
-            '5432123454321234-543212345432',
-            'ud---u---d---u-- e',
+            '54321234',
+            'ud--du--',
+            '16', // beats per measure
+            '4/4', // time signature
+            '1', // notes per beat
           ],
           [
             'Exercise 9 - Pick four notes per beat. Use outside picking to change directions.',
-            '5432123454321234-543212345432',
-            'd---u---d---u--- e',
+            '54321234',
+            'd---u---',
+            '16', // beats per measure
+            '4/4', // time signature
+            '1', // notes per beat
           ],
           [
             'Exercise 10 - Pick four notes per beat. Freely alternate between inside and outside picking',
-            '5432123454321234-543212345432',
-            'ud---u---d---u-- e',
+            '54321234',
+            'ud--du---',
+            '16', // beats per measure
+            '4/4', // time signature
+            '1', // notes per beat
           ],
         ],
       },
@@ -551,52 +590,52 @@ export const exercises = {
             [
               'Pattern 1 - Play all 8 notes in each pattern. Count 1 - & - 2 - & - 3 - & - 4 - &. This means each click is only one half beat (1/2).',
               '65465456-54354345-43243234-3213',
-              'dudududu e',
+              'dudududu',
             ],
             [
               "Pattern 1 (part two) - Skip the 3rd beat and continue with an upstroke on the next '&'.",
               '6546e456-5435d345-4324c234-3213',
-              'dudu udu e',
+              'dudu udu',
             ],
             [
               'Pattern 2 - Play 4 ascending notes, then play the last two note3s again before coming back to the first note.',
               '65434356-54323245-43212134-5432',
-              'dudududu e',
+              'dudududu',
             ],
             [
               "Pattern 2 (part two) - Skip the '&' of the 2nd beat and continue with a downstroke on the 3rd beat.",
               '654c4356-543b3245-432a2134-543b',
-              'dud dudu e',
+              'dud dudu',
             ],
             [
               'Pattern 3 - Play all 8 notes in each pattern. Count 1 - & - 2 - & - 3 - & - 4 - &. This means each click is only one half beat (1/2).',
               '65463454-54352342-43241231-5434',
-              'dudududu e',
+              'dudududu',
             ],
             [
               "Pattern 3 (part two) - Skip the 4th beat and continue with an upstroke on the next '&'.",
               '654634e4-543523d2-432412c1-5434',
-              'dududu u e',
+              'dududu u',
             ],
             [
               'Pattern 4 - Play all 8 notes in each pattern. Count 1 - & - 2 - & - 3 - & - 4 - &. This means each click is only one half beat (1/2).',
               '63543645-52432534-41321423-5243',
-              'dudududu e',
+              'dudududu',
             ],
             [
               "Pattern 4 (part two) - Skip the '&' of the 3rd beat and continue with a downstroke on the 4th beat.",
               '63543f45-52432e34-41321d23-5243',
-              'dudud du e',
+              'dudud du',
             ],
             [
               'Pattern 5 - Play all 8 notes in each pattern. Count 1 - & - 2 - & - 3 - & - 4 - &. This means each click is only one half beat (1/2).',
               '66445345-55334234-44223123-5533',
-              'dudududu e',
+              'dudududu',
             ],
             [
               "Pattern 5 (part two) - Skip the 2nd beat and continue with an upstroke on the next '&'.",
               '66d45345-55c34234-44b23123-55a3',
-              'du ududu e',
+              'du ududu',
             ],
           ],
         },
@@ -837,52 +876,52 @@ export const exercises = {
             [
               'Exercise 1 - Ascending banjo rolls, use cross picking',
               '65465465-65465465-65465465-6546',
-              'd-ud-udu d-ud-udu e',
+              'd-ud-udu d-ud-udu',
             ],
             [
               'Exercise 2 - Descending banjo rolls, use cross picking',
               '45645645-45645645-45645645-4564',
-              'u-du-dud u-du-dud e',
+              'u-du-dud u-du-dud',
             ],
             [
               'Exercise 3 - Ascending banjo rolls, use alternate picking',
               '65465465-65465465-65465465-6546',
-              'dudududu e',
+              'dudududu',
             ],
             [
               'Exercise 4 - Descending banjo rolls, use alternate picking',
               '45645645-45645645-45645645-4564',
-              'dudududu e',
+              'dudududu',
             ],
             [
               'Exercise 5 - Five ascending banjo rolls over two measures. Use cross picking and count 1 & 2 & 3 & 4 &',
               '65465465-46546545-65465465-4654',
-              'd-ud-ud- ud-ud-u- e',
+              'd-ud-ud- ud-ud-u-',
             ],
             [
               'Exercise 6 - Five descending banjo rolls over two measures. Use cross picking and count 1 & 2 & 3 & 4 &',
               '45645645-64564565-45645645-6456',
-              'u-du-du- du-du-d- e',
+              'u-du-du- du-du-d-',
             ],
             [
               'Exercise 7 - Five ascending banjo rolls over two measures. Use alternate picking',
               '65465465-46546545-65465465-4654',
-              'dudududu e',
+              'dudududu',
             ],
             [
               'Exercise 8 - Five descending banjo rolls over two measures. Use alternate picking',
               '45645645-64564565-45645645-6456',
-              'dudududu e',
+              'dudududu',
             ],
             [
               'Exercise 9 - Once you have a feel for banjo rolls, try changing it up a little.',
               '65465434-65465434-65465434-6546',
-              'd-ud--u- e',
+              'd-ud--u-',
             ],
             [
               'Exercise 10 - This is a more complicated pattern for an extra challenge',
               '63543645-63543645-63543645-6354',
-              'dud-udu- e',
+              'dud-udu-',
             ],
           ],
         },
@@ -959,7 +998,7 @@ export const exercises = {
             [
               'Exercise 3 - Sweep string 6 4 and 2, then strings 1 3 and 5. Use outside picking to change directions.',
               '642135642135-642135642135-6421',
-              'd--u--d--u-- e',
+              'd--u--d--u--',
             ],
             [
               'Exercise 4 - Sweep four strings, then pick the 1st and last strings twice. Use all outside picking and reverse the order when descending.',
@@ -974,12 +1013,12 @@ export const exercises = {
             [
               'Exercise 6 - Start on the 6th string and practice all outside picking while skipping three strings.',
               '62665155-66265515-62665155-6626',
-              'du-d-udu udududu- e',
+              'du-d-udu udududu-',
             ],
             [
               'Exercise 7 - Start on the 1st string and skip 3 strings. Use all sweeps and outside picking',
               '22621151-26221511-22621151-2622',
-              'dud--udu -dudud-u e',
+              'dud--udu -dudud-u',
             ],
             [
               'Exercise 8 - Play three notes on the 6th and 1st strings, alternately.',

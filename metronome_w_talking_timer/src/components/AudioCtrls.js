@@ -192,7 +192,7 @@ function AudioCtrls({
             disabled={!ready}
             onClick={() => {
               setStartLesson(true)
-              setPauseLesson(false)
+              setPauseLesson(true)
             }}
           >
             Begin

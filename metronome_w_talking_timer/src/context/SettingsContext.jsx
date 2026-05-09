@@ -47,6 +47,12 @@ export function SettingsProvider({ children }) {
   const [metronomeSound, setMetronomeSound] = useState(
     settings.metronomeSound || 'wood metronome (default)'
   )
+  const [ctx, setCtx] = useState(null)
+  const xSpace = 40
+    //  Not sure how these are used...  this is maybe temporary.
+    const [lineHeight] = useState(15)
+    const [leftMargin] = useState(100)
+    const [mt] = useState(5)
 
   useEffect(() => {
     const settingsObj = {
@@ -140,6 +146,8 @@ export function SettingsProvider({ children }) {
         metronomeVolume,
         setMetronomeVolume,
         correctTimeFormat,
+        ctx, setCtx, xSpace,
+        lineHeight, leftMargin, mt
       }}
     >
       {children}

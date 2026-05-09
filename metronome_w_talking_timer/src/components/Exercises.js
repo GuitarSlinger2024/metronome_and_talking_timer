@@ -2,18 +2,17 @@ import React, { useEffect, useContext, useState } from 'react'
 import { SettingsContext } from '../context/SettingsContext'
 
 import { nums, exercises, lessons } from '../lessonData'
-import Tabs from './Tablature'
+import Tabs from './notesDisplay/Tablature'
 import ConvertTime from './ConvertTime'
 import arrow from '../_img/arrow.png'
 
 //  https://www.npmjs.com/package/use-timer
 import { useTimer } from 'use-timer'
 
-function Exercises({ pauseLesson, lessonInfo, setStartLesson }) {
+function Exercises({ pauseLesson, lessonInfo, setStartLesson, setNoteObjs }) {
   const { section, part, lesson, useLongDesc } = useContext(SettingsContext)
 
   const [finished, setFinished] = useState(new Set())
-  const xSpacing = 30
 
   const {
     time: exTime,
@@ -167,12 +166,11 @@ function Exercises({ pauseLesson, lessonInfo, setStartLesson }) {
       </div>
       <div className="exercise practice">
         <Tabs
-          xSpace={xSpacing}
+          setNoteObjs={setNoteObjs}
           notesOnStaff={
             exerciseObj &&
             exerciseObj.lessons[lessonIndex].exercises[exerciseIndex]
           }
-          strokes={''}
         />
         <div className="info">
           <div
