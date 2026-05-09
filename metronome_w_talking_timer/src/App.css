@@ -114,7 +114,7 @@ main {
 .dark main {
   --section-title: #b6edff;
   --exercise-title: lightgreen;
-  --by-day: gold;
+  --by-day: #ccac00;
   --track-color: #b6edff;
   --thumb-color: black;
 }

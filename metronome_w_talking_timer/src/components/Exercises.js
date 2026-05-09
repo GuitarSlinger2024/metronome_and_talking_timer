@@ -14,6 +14,7 @@ function Exercises({ pauseLesson, lessonInfo, setStartLesson }) {
     useContext(SettingsContext)
 
   const [finished, setFinished] = useState(new Set())
+  const xSpacing = 30
 
   const {
     time: exTime,
@@ -159,6 +160,7 @@ function Exercises({ pauseLesson, lessonInfo, setStartLesson }) {
       </div>
       <div className="exercise practice">
         <Tabs
+          xSpace={xSpacing}
           notesOnStaff={
             exerciseObj &&
             exerciseObj.lessons[lessonIndex].exercises[exerciseIndex]

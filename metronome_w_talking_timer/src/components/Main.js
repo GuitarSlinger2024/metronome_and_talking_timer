@@ -52,7 +52,10 @@ function Main() {
           }}
         />
         <Header />
-        <div id="controls" className={`${showRecords ? 'hideThis' : ''}`}>
+        <div
+          id="controls"
+          className={`${showRecords ? 'hideThis' : ''}`}
+        >
           <LessonCtrls
             setReady={setReady}
             startLesson={startLesson}
