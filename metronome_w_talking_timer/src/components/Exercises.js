@@ -10,8 +10,7 @@ import arrow from '../_img/arrow.png'
 import { useTimer } from 'use-timer'
 
 function Exercises({ pauseLesson, lessonInfo, setStartLesson }) {
-  const { section, part, lesson, useLongDesc } =
-    useContext(SettingsContext)
+  const { section, part, lesson, useLongDesc } = useContext(SettingsContext)
 
   const [finished, setFinished] = useState(new Set())
   const xSpacing = 30
@@ -76,7 +75,9 @@ function Exercises({ pauseLesson, lessonInfo, setStartLesson }) {
     speechSynthesis.cancel()
     if (exerciseObj) {
       let text = exerciseObj.lessons[lessonIndex].exercises[exerciseIndex][0]
-      text = text.replace('1 - e - & - a - 2', '1 e & a 2').replace('3 - e - & - a - 4', '3 e & a 4')
+      text = text
+        .replace('1 - e - & - a - 2', '1 e & a 2')
+        .replace('3 - e - & - a - 4', '3 e & a 4')
       let utterance = new SpeechSynthesisUtterance(
         useLongDesc ? text : text.split(' - ')[0]
       )
@@ -105,15 +106,17 @@ function Exercises({ pauseLesson, lessonInfo, setStartLesson }) {
   function lessonOver() {
     speechSynthesis.cancel()
     let text
-    if (lessonInfo.numOfExercises === finished.size || true) {
+    if (lessonInfo.numOfExercises === finished.size) {
       text = 'This concludes '
       text += useLongDesc
         ? `${part ? part : section}, lesson ${
             exerciseObj && exerciseObj.lessons[lessonIndex].lesson
           }, ${lessonInfo && lessonInfo.title.replace(' /', '')}.`
         : `this lesson`
-              
-      let logData = localStorage.getItem('exerciseLogs') ? JSON.parse(localStorage.getItem('exerciseLogs')) : {}
+
+      let logData = localStorage.getItem('exerciseLogs')
+        ? JSON.parse(localStorage.getItem('exerciseLogs'))
+        : {}
       if (!logData[section]) logData[section] = {}
       if (!logData[section][part]) logData[section][part] = {}
       if (!logData[section][part][lesson]) logData[section][part][lesson] = []
@@ -127,11 +130,15 @@ function Exercises({ pauseLesson, lessonInfo, setStartLesson }) {
       for (let x = 0; x < lessonInfo.numOfExercises; x++) {
         if (!finished.has(x)) unFinished.push(nums[x + 1])
       }
-      text = `This practice session will not be logged. You failed to complete exercise${
-        unFinished.length > 1 ? 's' : ''
-      } `
-      const lastItem = unFinished.length > 1 ? ` and ${unFinished.pop()}.` : '.'
-      text += unFinished.join(' ') + lastItem
+      text = `This practice session will not be logged. `
+      if (useLongDesc) {
+        text += `You failed to complete exercise${
+          unFinished.length > 1 ? 's' : ''
+        } `
+        const lastItem =
+          unFinished.length > 1 ? ` and ${unFinished.pop()}.` : '.'
+        text += unFinished.join(' ') + lastItem
+      }
     }
     let utterance = new SpeechSynthesisUtterance(text)
     speechSynthesis.speak(utterance)
