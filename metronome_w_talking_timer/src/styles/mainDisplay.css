@@ -101,11 +101,11 @@
   margin: 0.3em auto 0.5em;
   padding: 0.4em;
   filter: brightness(0);
-  transition: 0.1s;
+  transition: 0.3s;
 }
 
 .noPickDir {
-  margin: -0.9em auto 0.5em !important;
+  margin: -1.3em auto 0.5em !important;
 }
 /* 1.25em */
 .canvasContainer span {
@@ -196,6 +196,12 @@
   opacity: 1;
   pointer-events: all;
   height: fit-content;
+  overflow: hidden;
+  transition: margin .3s;
+}
+
+.exercise.practice:has(.noPickDir) {
+  margin-top: 1em;
 }
 
 .info {

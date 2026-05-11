@@ -94,14 +94,14 @@ export function TabSettings({ children }) {
         CreateTab(notesOnStaff[4], ctx, 15)
         // Tablature()
         if (notes.length) {
-          if (notes[0].xPos <= leftMargin) {
-            const lastNote = notes[notes.length - 1]
-            const moveThis = notes.shift()
-            moveThis.xPos = lastNote.xPos + xSpace
-            notes.push(moveThis)
-            setNoteObjs(notes)
-          }
-          notes.forEach(note => note.update((xSpace / 30) * +notesOnStaff[5] / 1 ))
+        //   if (notes[0].xPos <= leftMargin) {
+        //     const lastNote = notes[notes.length - 1]
+        //     const moveThis = notes.shift()
+        //     moveThis.xPos = lastNote.xPos + xSpace
+        //     notes.push(moveThis)
+        //     setNoteObjs(notes)
+        //   }
+          notes.forEach(note => note.update((xSpace / 30) * +notesOnStaff[5] / 2 ))
         } else {
           console.log('%cno notes yet 😂', 'font-size: 20px;color:#555')
         }
