@@ -122,7 +122,7 @@ export const exercises = {
             'ud--du--',
             '8', // beats per measure
             '4/4', // time signature
-            '1', // notes per beat
+            '2', // notes per beat
           ],
           [
             'Exercise 6 - Pick two notes per beat. Use outside picking to change directions.',
@@ -130,7 +130,7 @@ export const exercises = {
             'd---u---',
             '8', // beats per measure
             '4/4', // time signature
-            '1', // notes per beat
+            '2', // notes per beat
           ],
           [
             'Exercise 7 - Sweep up and down five strings, four notes per beat. Count: 1 - e - & - a - 2 - (pause) - 3 - e - & - a - 4.',
@@ -138,7 +138,7 @@ export const exercises = {
             'd----xxxu----xxx',
             '16', // beats per measure
             '4/4', // time signature
-            '1', // notes per beat
+            '4', // notes per beat
           ],
           [
             'Exercise 8 - Pick four notes per beat. Use inside picking to change directions.',
@@ -146,7 +146,7 @@ export const exercises = {
             'ud--du--',
             '16', // beats per measure
             '4/4', // time signature
-            '1', // notes per beat
+            '4', // notes per beat
           ],
           [
             'Exercise 9 - Pick four notes per beat. Use outside picking to change directions.',
@@ -154,7 +154,7 @@ export const exercises = {
             'd---u---',
             '16', // beats per measure
             '4/4', // time signature
-            '1', // notes per beat
+            '4', // notes per beat
           ],
           [
             'Exercise 10 - Pick four notes per beat. Freely alternate between inside and outside picking',
@@ -162,7 +162,7 @@ export const exercises = {
             'ud--du---',
             '16', // beats per measure
             '4/4', // time signature
-            '1', // notes per beat
+            '4', // notes per beat
           ],
         ],
       },

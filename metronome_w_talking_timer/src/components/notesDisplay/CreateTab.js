@@ -7,10 +7,10 @@ function CreateTab(signature, ctx, lineHeight) {
   ctx.textAlign = 'left'
   ctx.textBaseline = 'middle'
   ctx.fillStyle = 'white'
-  console.log({
-    sig1: signature.split('/')[0],
-    sig2: signature.split('/')[1],
-  })
+  // console.log({
+  //   sig1: signature.split('/')[0],
+  //   sig2: signature.split('/')[1],
+  // })
   ctx.fillText(signature.split('/')[0], 20, 67)
   ctx.fillText(signature.split('/')[1], 20, 108)
 

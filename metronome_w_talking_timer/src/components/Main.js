@@ -16,8 +16,6 @@ import listIcon from '../_img/list_white.png'
 function Main() {
   const [mode, setMode] = useState('')
   const [ready, setReady] = useState(false)
-  const [startLesson, setStartLesson] = useState(false)
-  const [pauseLesson, setPauseLesson] = useState(true)
   const [showRecords, setShowRecords] = useState(false)
 
   useEffect(() => {
@@ -58,22 +56,14 @@ function Main() {
         >
           <LessonCtrls
             setReady={setReady}
-            startLesson={startLesson}
           />
           <AudioCtrls
             mode={mode}
             ready={ready}
-            startLesson={startLesson}
-            setStartLesson={setStartLesson}
-            pauseLesson={pauseLesson}
-            setPauseLesson={setPauseLesson}
           />
         </div>
 
         <ExerciseCtrl
-          startLesson={startLesson}
-          pauseLesson={pauseLesson}
-          setStartLesson={setStartLesson}
           showRecords={showRecords}
         />
 

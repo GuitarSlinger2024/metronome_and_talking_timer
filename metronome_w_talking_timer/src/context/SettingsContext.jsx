@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from 'react'
+import { lessons } from '../lessonData'
 
 import audio1 from '../_metronome_sounds/bassdrum.mp3'
 import audio2 from '../_metronome_sounds/bongo_1.mp3'
@@ -47,13 +48,9 @@ export function SettingsProvider({ children }) {
   const [metronomeSound, setMetronomeSound] = useState(
     settings.metronomeSound || 'wood metronome (default)'
   )
-  const [ctx, setCtx] = useState(null)
-  const xSpace = 40
-    //  Not sure how these are used...  this is maybe temporary.
-    const [lineHeight] = useState(15)
-    const [leftMargin] = useState(100)
-    const [mt] = useState(5)
+ 
 
+  //  Store current settings
   useEffect(() => {
     const settingsObj = {
       section: section,
@@ -146,8 +143,6 @@ export function SettingsProvider({ children }) {
         metronomeVolume,
         setMetronomeVolume,
         correctTimeFormat,
-        ctx, setCtx, xSpace,
-        lineHeight, leftMargin, mt
       }}
     >
       {children}

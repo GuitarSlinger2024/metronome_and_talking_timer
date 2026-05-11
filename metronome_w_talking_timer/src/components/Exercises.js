@@ -1,15 +1,17 @@
 import React, { useEffect, useContext, useState } from 'react'
 import { SettingsContext } from '../context/SettingsContext'
 
-import { nums, exercises, lessons } from '../lessonData'
+import { nums, exercises } from '../lessonData'
 import Tabs from './notesDisplay/Tablature'
 import ConvertTime from './ConvertTime'
 import arrow from '../_img/arrow.png'
 
 //  https://www.npmjs.com/package/use-timer
 import { useTimer } from 'use-timer'
+import { TabContext } from '../context/TabContext'
 
-function Exercises({ pauseLesson, lessonInfo, setStartLesson, setNoteObjs }) {
+function Exercises({ pauseLesson, lessonInfo }) {
+  const { setStartLesson, exerciseObj, setExerciseObj, scrollInterval, setScrollInterval, setInterval_anime, exerciseIndex, setExerciseIndex, lessonIndex} = useContext(TabContext)
   const { section, part, lesson, useLongDesc } = useContext(SettingsContext)
 
   const [finished, setFinished] = useState(new Set())
@@ -43,14 +45,12 @@ function Exercises({ pauseLesson, lessonInfo, setStartLesson, setNoteObjs }) {
     initialTime: 0,
   })
 
-  const [lessonIndex] = useState(getLessonIndex())
-  const [exerciseObj, setExerciseObj] = useState(null)
-  const [exerciseIndex, setExerciseIndex] = useState(null)
-
   useEffect(() => {
+    // console.log(exercises[section][part] || exercises[section])
+    // console.log({part, section, lessonIndex})
     setExerciseObj(exercises[section][part] || exercises[section])
     setExerciseIndex(0)
-  }, [])
+  }, [section, part])
 
   useEffect(() => {
     if (pauseLesson) {
@@ -62,18 +62,15 @@ function Exercises({ pauseLesson, lessonInfo, setStartLesson, setNoteObjs }) {
     }
   }, [pauseLesson])
 
-  function getLessonIndex() {
-    const lessonsObj = part
-      ? lessons['Picking Patterns'][part]
-      : lessons['Sweep Picking']
-    return lessonsObj.findIndex(lssn => lssn === lesson)
-  }
+
 
   useEffect(() => {
     //  Add vocals
     speechSynthesis.cancel()
     if (exerciseObj) {
-      let text = exerciseObj.lessons[lessonIndex].exercises[exerciseIndex][0]
+      const exercise = exerciseObj.lessons[lessonIndex].exercises[exerciseIndex]
+      console.log(exercise)
+      let text = exercise[0]
       text = text
         .replace('1 - e - & - a - 2', '1 e & a 2')
         .replace('3 - e - & - a - 4', '3 e & a 4')
@@ -104,6 +101,9 @@ function Exercises({ pauseLesson, lessonInfo, setStartLesson, setNoteObjs }) {
 
   function lessonOver() {
     speechSynthesis.cancel()
+    clearInterval(scrollInterval)
+    setScrollInterval(null)
+    clearInterval(setInterval_anime)
     let text
     if (lessonInfo.numOfExercises === finished.size) {
       text = 'This concludes '
@@ -165,13 +165,7 @@ function Exercises({ pauseLesson, lessonInfo, setStartLesson, setNoteObjs }) {
         </div>
       </div>
       <div className="exercise practice">
-        <Tabs
-          setNoteObjs={setNoteObjs}
-          notesOnStaff={
-            exerciseObj &&
-            exerciseObj.lessons[lessonIndex].exercises[exerciseIndex]
-          }
-        />
+        <Tabs />
         <div className="info">
           <div
             className="time"
