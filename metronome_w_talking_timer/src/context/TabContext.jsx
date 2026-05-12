@@ -64,6 +64,9 @@ export function TabSettings({ children }) {
   useEffect(() => {
     if (!exerciseObj) return
     console.log({ exerciseObj })
+    console.log(
+      exerciseObj?.lessons[lessonIndex]?.exercises[exerciseIndex] || []
+    )
     setNotesOnStaff(
       exerciseObj?.lessons[lessonIndex]?.exercises[exerciseIndex] || []
     )
@@ -80,6 +83,7 @@ export function TabSettings({ children }) {
       return
 
     setSetInterval_anime(() => {
+      clearInterval(setInterval_anime)
       clearInterval(scrollInterval)
       const interval =
         section === 'Sweep Picking' &&

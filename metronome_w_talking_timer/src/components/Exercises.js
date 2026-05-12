@@ -69,6 +69,7 @@ function Exercises({ pauseLesson, lessonInfo }) {
     // console.log(exercises[section][part] || exercises[section])
     // console.log({part, section, lessonIndex})
     setExerciseObj(exercises[section][part] || exercises[section])
+    console.log(exercises[section][part] || exercises[section])
     setExerciseIndex(0)
   }, [section, part])
 
