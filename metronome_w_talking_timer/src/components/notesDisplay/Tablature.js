@@ -18,6 +18,7 @@ function Tablature() {
     notesOnStaff,
     lineHeight,
     mt,
+    setFocusLine
   } = useContext(TabContext)
   const { hidePickDirections, setHidePickDirections } =
     useContext(SettingsContext)
@@ -58,19 +59,31 @@ function Tablature() {
 
   function render_tablature({ notesOnStaff, timeSig, notesPerBeat, pickDir }) {
     console.log({ notesOnStaff, timeSig, notesPerBeat, pickDir, ctx })
-    // ctx.clearRect(0, 0, 1000, 1000)
+    //  Create focusLine
+    const focusLine = new CreateNotes({
+      xPos: leftMargin,
+      yPos: null,
+      ctx: ctx,
+      xSpace,
+      leftMargin,
+      note: 'focusLine',
+      lineHeight,
+      mt,
+    })
 
+    setFocusLine(focusLine)
+
+    //  Get enough notes and pick directions
     const noteList = [...notesOnStaff]
     const directionsList = [...pickDir]
     console.log({ noteList })
     console.log({ directionsList })
-    //  Get enough notes and pick directions
     let notes = []
     while (notes.length < 24) notes.push(...noteList)
     let directions = []
     while (directions.length < 24) directions.push(...directionsList)
     const objs = []
-
+    //  Create notes, rests & pick directions
     const numOfBeats = +notesPerBeat
     let numOfSpaces = notes.length
     for (let spaceNum = 0; spaceNum < numOfSpaces; spaceNum++) {

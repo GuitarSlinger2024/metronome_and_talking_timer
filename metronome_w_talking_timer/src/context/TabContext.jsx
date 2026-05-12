@@ -30,6 +30,9 @@ export function TabSettings({ children }) {
   const [exerciseObj, setExerciseObj] = useState(null)
   const [exerciseIndex, setExerciseIndex] = useState(null)
   const [noteObjs, setNoteObjs] = useState([])
+  const [focusLine, setFocusLine] = useState(null)
+  const [focusLinePos, setFocusLinePos] = useState(0)
+  const [moveTabs, setMoveTabs] = useState(false)
 
   useEffect(() => {
     setLessonIndex(() => {
@@ -57,8 +60,8 @@ export function TabSettings({ children }) {
     metronomeVolume,
     metronomeSound,
     noteObjs,
-    ctx,
-    notesOnStaff,
+    // ctx,
+    // notesOnStaff,
   ])
 
   useEffect(() => {
@@ -94,12 +97,13 @@ export function TabSettings({ children }) {
 
       return setInterval(() => {
         CreateStaff(notesOnStaff[4], ctx, 15)
-        if (notes.length) {
+        if (notes.length && moveTabs) {
           notes.forEach(note =>
             note.update(((xSpace / 30) * +notesOnStaff[5]) / 2)
           )
         } else {
-          console.log('%cno notes yet 😂', 'font-size: 20px;color:#555')
+          notes.forEach(note => note.draw())
+          focusLine.update((-(xSpace / 30) * +notesOnStaff[5]) / 2)
         }
       }, interval / 30 / 2)
     })
@@ -107,7 +111,8 @@ export function TabSettings({ children }) {
     JSON.stringify(noteObjs),
     // JSON.stringify(notesOnStaff),
     // JSON.stringify(exerciseObj),
-    // lessonIndex,
+    lessonIndex,
+    moveTabs
     // startLesson
   ])
 
@@ -127,6 +132,9 @@ export function TabSettings({ children }) {
         const sound = newSound.cloneNode()
         sound.volume = metronomeVolume / 100
         sound.play()
+        console.log(focusLinePos)
+        if (focusLinePos < 10) setFocusLinePos(focusLinePos + 1)
+        else setMoveTabs(true)
       }, interval)
     )
 
@@ -167,6 +175,7 @@ export function TabSettings({ children }) {
         setScrollInterval,
         setInterval_anime,
         setSetInterval_anime,
+        setFocusLine,
       }}
     >
       {children}

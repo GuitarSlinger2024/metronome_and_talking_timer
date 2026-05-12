@@ -40,6 +40,11 @@ class CreateNotes {
     if (this.note === 'u' || this.note === 'd') this.initStrokes()
     if (['e', 'E', 'q', 'Q'].includes(this.note)) this.initRest()
     //  e - eightRest, E - dotEightRest, q - quarterRest, Q - dotQuarterRest
+    if (this.note === 'focusLine') this.initFocusLine()
+  }
+
+  initFocusLine() {
+    this.xPos -= 0.5
   }
 
   async initStrokes() {
@@ -51,7 +56,12 @@ class CreateNotes {
   }
 
   async initRest() {
-    const blob = this.note === 'e' ? eighthRest : this.note === 'Q' ? dotQuarterRest : dotEighthRest
+    const blob =
+      this.note === 'e'
+        ? eighthRest
+        : this.note === 'Q'
+        ? dotQuarterRest
+        : dotEighthRest
     //  The only thing needed for .src = base64 to work is for the image to load
     this.image = await this.Base64ToImage(blob)
     this.width = this.note === 'e' ? 30 : 40
@@ -60,7 +70,10 @@ class CreateNotes {
   //            called from requestAnimationFrame function
   update(distance) {
     this.xPos -= distance
-    // if ((this.xPos - this.leftMargin) > 200) {}
+    if (this.note === 'focusLine') {
+      this.draw()
+      return
+    }
     this.opacity =
       this.xPos - this.leftMargin > 200 && this.xPos < this.canvasLen - 15
         ? (this.canvasLen - 15 - this.xPos) / 30
@@ -69,17 +82,27 @@ class CreateNotes {
         : this.opacity
     this.opacity = this.opacity > 1 ? 1 : this.opacity < 0 ? 0 : this.opacity
     this.color = `rgba(255, 255, 255, ${this.opacity})`
+    //  Check if note/image is still visible
+    if (this.xPos <= this.leftMargin)
+      this.xPos += this.xSpace * this.numOfSpaces
     this.draw()
-
-    //  Check if xPos < this.leftMargin - this.width
-    if (this.xPos < this.leftMargin) this.xPos += this.xSpace * this.numOfSpaces
   }
 
   draw() {
     if (this.note >= 1 && this.note <= 6) this.drawNote()
-    if (this.note === 'barLine') this.verticalLine()
+    if (this.note === 'barLine') this.barLine()
+    if (this.note === 'focusLine') this.focusLine()
     if (['u', 'd'].includes(this.note)) this.upAndDownstrokes()
     if (['e', 'E', 'q', 'Q'].includes(this.note)) this.drawRest()
+  }
+
+  focusLine() {
+    this.ctx.strokeStyle = 'red'
+    this.ctx.beginPath()
+    this.ctx.moveTo(this.xPos, this.lineHeight + 20 + 10)
+    this.ctx.lineTo(this.xPos, 6 * this.lineHeight + 20 + 10)
+    this.ctx.stroke()
+    this.ctx.closePath()
   }
 
   drawNote() {
@@ -90,7 +113,7 @@ class CreateNotes {
     this.ctx.closePath()
   }
 
-  verticalLine() {
+  barLine() {
     this.ctx.strokeStyle = '#fff7'
     this.ctx.beginPath()
     this.ctx.moveTo(this.xPos + this.xSpace / 2, this.lineHeight + 20 + 10)
