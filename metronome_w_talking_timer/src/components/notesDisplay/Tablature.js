@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState, useContext } from 'react'
 import { SettingsContext } from '../../context/SettingsContext'
 
 //  Classes
-import CreateTab from './CreateTab'
+import CreateStaff from './CreateStaff'
 import CreateNotes from './CreateNotes'
 import { Circle } from '../../classes/circle.class'
 import { TabContext } from '../../context/TabContext'
@@ -44,6 +44,8 @@ function Tablature() {
   //           useEffect:  New staff is set-up
   useEffect(() => {
     if (!notesOnStaff || !ctx) return
+    console.log('Creating the staff')
+    CreateStaff(notesOnStaff[4], ctx, lineHeight)
     console.log('about to render tab')
     render_tablature({
       notesOnStaff: notesOnStaff[1], //  up to where it repeats
@@ -51,7 +53,6 @@ function Tablature() {
       notesPerBeat: notesOnStaff[3],
       pickDir: notesOnStaff[2] || '',
     })
-    CreateTab(notesOnStaff[4], ctx, lineHeight)
   }, [JSON.stringify(notesOnStaff), ctx])
   // }, [notesOnStaff, hidePickDirections])
 

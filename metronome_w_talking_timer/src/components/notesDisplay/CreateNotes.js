@@ -4,6 +4,9 @@ import { TabContext } from '../../context/TabContext'
 //  Images
 import upstroke from '../../_img/white_upstroke.png'
 import downstroke from '../../_img/white_downstroke.png'
+import dotQuarterRest from '../../_img/music_notations/white/dotQuarterRest.png'
+import eighthRest from '../../_img/music_notations/white/eighthRest.png'
+import dotEighthRest from '../../_img/music_notations/white/dotEighthRest.png'
 
 class CreateNotes {
   constructor({
@@ -35,13 +38,23 @@ class CreateNotes {
     this.opacity = xPos >= this.canvasLen - this.width ? 0 : 1
 
     if (this.note === 'u' || this.note === 'd') this.initStrokes()
+    if (['e', 'E', 'q', 'Q'].includes(this.note)) this.initRest()
+    //  e - eightRest, E - dotEightRest, q - quarterRest, Q - dotQuarterRest
   }
 
   async initStrokes() {
+    console.log('Initializing rest image, right??? .......')
     const blob = this.note === 'u' ? upstroke : downstroke
     //  The only thing needed for .src = base64 to work is for the image to load
     this.image = await this.Base64ToImage(blob)
     this.width = 20
+  }
+
+  async initRest() {
+    const blob = this.note === 'e' ? eighthRest : this.note === 'Q' ? dotQuarterRest : dotEighthRest
+    //  The only thing needed for .src = base64 to work is for the image to load
+    this.image = await this.Base64ToImage(blob)
+    this.width = this.note === 'e' ? 30 : 40
   }
 
   //            called from requestAnimationFrame function
@@ -65,7 +78,8 @@ class CreateNotes {
   draw() {
     if (this.note >= 1 && this.note <= 6) this.drawNote()
     if (this.note === 'barLine') this.verticalLine()
-    if (this.note === 'u' || this.note === 'd') this.upAndDownstrokes()
+    if (['u', 'd'].includes(this.note)) this.upAndDownstrokes()
+    if (['e', 'E', 'q', 'Q'].includes(this.note)) this.drawRest()
   }
 
   drawNote() {
@@ -85,16 +99,27 @@ class CreateNotes {
     this.ctx.closePath()
   }
 
-  async upAndDownstrokes(space, char) {
+  async upAndDownstrokes() {
     // image.src = URL.createObjectURL(blobObj)
-    const imgWidth = 20
     this.ctx.drawImage(
       this.image,
-      // space * xSpace + leftMargin - imgWidth / 2,
+      // space * xSpace + leftMargin - this.width / 2,
       this.xPos - this.width / 2,
       this.mt,
-      imgWidth,
-      imgWidth
+      this.width,
+      this.width
+    )
+  }
+
+  async drawRest() {
+    // image.src = URL.createObjectURL(blobObj)
+    this.ctx.drawImage(
+      this.image,
+      // space * xSpace + leftMargin - this.width / 2,
+      this.xPos - this.width / 2,
+      20 + 10 + this.lineHeight * 2,
+      this.width,
+      this.lineHeight * 3
     )
   }
 

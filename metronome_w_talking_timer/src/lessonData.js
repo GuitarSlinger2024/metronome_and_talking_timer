@@ -65,7 +65,7 @@ export const exercises = {
           ],
           [
             'Exercise 2 - Sweep up and down five strings, two notes per beat, three beats per measure. Skip the last half beat.',
-            '54321x12345x',
+            '54321e12345e',
             'd-----u-----',
             '6', // beats per measure
             '3/4', // time signature
@@ -73,7 +73,7 @@ export const exercises = {
           ],
           [
             'Exercise 3 - Sweep up and down five strings, four notes per beat. Count: 1 - e - & - a - 2 (pause), 3 - e - & - a - 4 (pause)',
-            '54321xxx12345xxx',
+            '54321-E-12345-E-',
             'd-------u-------',
             '16', // beats per measure
             '4/4', // time signature

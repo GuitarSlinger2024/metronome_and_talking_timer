@@ -39,27 +39,6 @@ function LessonInfo({
     )
   }
 
-  // const days = [
-  //   'Sunday',
-  //   'Monday',
-  //   'Tuesday',
-  //   'Wednesday',
-  //   'Thursday',
-  //   'Friday',
-  //   'Saturday'
-  // ]
-
-  // function correctTimeFormat(record) {
-  //   const date = new Date(record)
-  //   const dateArray = date.toString().split(' ')
-  //   const time = dateArray[4].split(':')
-  //   time.pop()
-  //   console.log(time)
-  //   const string = `${days[new Date().getDay()]}, ${dateArray[1]} ${dateArray[2]} at ${time.join(':')} ${new Date().getHours() >= 12 ? 'pm' : 'am'}`
-  //   console.log({ string })
-  //   return <span>{string}</span>
-  // }
-
   function getRecordEls() {
     return (
       getExerciseRecords().length > 0 &&

@@ -4,17 +4,37 @@ import { SettingsContext } from '../context/SettingsContext'
 import { nums, exercises } from '../lessonData'
 import Tabs from './notesDisplay/Tablature'
 import ConvertTime from './ConvertTime'
+
+//  images
 import arrow from '../_img/arrow.png'
+import eighthNote from '../_img/music_notations/white/eighthNote.png'
+import eighthRest from '../_img/music_notations/white/eighthRest.png'
+import quarterNote from '../_img/music_notations/white/quarterNote.png'
+import quarterRest from '../_img/music_notations/white/quarterRest.png'
+import sixteenthNote from '../_img/music_notations/white/sixteenthNote.png'
+import dotEighthRest from '../_img/music_notations/white/dotEighthRest.png'
+import dotQuarterRest from '../_img/music_notations/white/dotQuarterRest.png'
 
 //  https://www.npmjs.com/package/use-timer
 import { useTimer } from 'use-timer'
 import { TabContext } from '../context/TabContext'
 
 function Exercises({ pauseLesson, lessonInfo }) {
-  const { setStartLesson, exerciseObj, setExerciseObj, scrollInterval, setScrollInterval, setInterval_anime, exerciseIndex, setExerciseIndex, lessonIndex} = useContext(TabContext)
+  const {
+    setStartLesson,
+    exerciseObj,
+    setExerciseObj,
+    scrollInterval,
+    setScrollInterval,
+    setInterval_anime,
+    exerciseIndex,
+    setExerciseIndex,
+    lessonIndex,
+  } = useContext(TabContext)
   const { section, part, lesson, useLongDesc } = useContext(SettingsContext)
 
   const [finished, setFinished] = useState(new Set())
+  const [dotEqualsImg, setDotEqualsImg] = useState(quarterNote)
 
   const {
     time: exTime,
@@ -62,12 +82,11 @@ function Exercises({ pauseLesson, lessonInfo }) {
     }
   }, [pauseLesson])
 
-
-
   useEffect(() => {
     //  Add vocals
     speechSynthesis.cancel()
     if (exerciseObj) {
+      console.log({ exerciseObj })
       const exercise = exerciseObj.lessons[lessonIndex].exercises[exerciseIndex]
       console.log(exercise)
       let text = exercise[0]
@@ -78,6 +97,10 @@ function Exercises({ pauseLesson, lessonInfo }) {
         useLongDesc ? text : text.split(' - ')[0]
       )
       speechSynthesis.speak(utterance)
+
+      //  dotEquals
+      const image = exercise[5] === '1' ? quarterNote : exercise[5] === '2' || exercise[5] === '3' ? eighthNote : sixteenthNote
+      setDotEqualsImg(image)
     }
   }, [exerciseIndex])
 
@@ -145,6 +168,15 @@ function Exercises({ pauseLesson, lessonInfo }) {
 
   return (
     <div id="main-display">
+      <div id="noteLegend">
+        <div className="smallCircle"></div>=
+        <div className="invertFromBlack dotEquals">
+          <img
+            src={dotEqualsImg}
+            alt=""
+          />
+        </div>
+      </div>
       <div id="description">
         <h3>
           {!part && section}

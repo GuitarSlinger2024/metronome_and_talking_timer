@@ -1,6 +1,6 @@
 import React from 'react'
 
-function CreateTab(signature, ctx, lineHeight) {
+function CreateStaff(signature, ctx, lineHeight) {
   ctx.clearRect(0, 0, 1000, 130)
   //  Time Signature
   ctx.font = 'bold 3rem Arial'
@@ -25,4 +25,4 @@ function CreateTab(signature, ctx, lineHeight) {
   }
 }
 
-export default CreateTab
+export default CreateStaff

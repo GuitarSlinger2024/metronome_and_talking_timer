@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { SettingsContext } from './SettingsContext'
 import { lessons } from '../lessonData'
-import CreateTab from '../components/notesDisplay/CreateTab'
+import CreateStaff from '../components/notesDisplay/CreateStaff'
 import CreateNotes from '../components/notesDisplay/CreateNotes'
 
 export const TabContext = createContext()
@@ -70,7 +70,7 @@ export function TabSettings({ children }) {
   }, [JSON.stringify(exerciseObj), exerciseIndex, startLesson])
 
   useEffect(() => {
-    // console.log('updating', { noteObjs })
+    console.log('updating', { noteObjs })
     if (
       !noteObjs ||
       !notesOnStaff?.length ||
@@ -89,35 +89,28 @@ export function TabSettings({ children }) {
       const notes = [...noteObjs]
 
       return setInterval(() => {
-        // ctx.clearRect(0, 0, 1000, 130)  //  done in CreateTab()
-        // console.log({ notesOnStaff })
-        CreateTab(notesOnStaff[4], ctx, 15)
-        // Tablature()
+        CreateStaff(notesOnStaff[4], ctx, 15)
         if (notes.length) {
-        //   if (notes[0].xPos <= leftMargin) {
-        //     const lastNote = notes[notes.length - 1]
-        //     const moveThis = notes.shift()
-        //     moveThis.xPos = lastNote.xPos + xSpace
-        //     notes.push(moveThis)
-        //     setNoteObjs(notes)
-        //   }
-          notes.forEach(note => note.update((xSpace / 30) * +notesOnStaff[5] / 2 ))
+          notes.forEach(note =>
+            note.update(((xSpace / 30) * +notesOnStaff[5]) / 2)
+          )
         } else {
           console.log('%cno notes yet 😂', 'font-size: 20px;color:#555')
         }
-      }, (interval / 30 / 2)  )
+      }, interval / 30 / 2)
     })
   }, [
-    JSON.stringify(notesOnStaff),
-    JSON.stringify(exerciseObj),
     JSON.stringify(noteObjs),
+    // JSON.stringify(notesOnStaff),
+    // JSON.stringify(exerciseObj),
+    // lessonIndex,
+    // startLesson
   ])
 
   //                    Functions
 
   //  Controls the timing for sound and animation
-  function runMetronome(newSound, noteObjs, setNoteObjs, notesOnStaff) {
-    // console.log(newSound, noteObjs, setNoteObjs)
+  function runMetronome(newSound) {
     const interval =
       section === 'Sweep Picking' &&
       (lesson === 'Changing Directions' || lesson === 'Building Speed')
