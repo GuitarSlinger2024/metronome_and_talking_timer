@@ -70,22 +70,29 @@ class CreateNotes {
   //            called from requestAnimationFrame function
   update(distance) {
     this.xPos -= distance
+    this.setOpacity()
     if (this.note === 'focusLine') {
       this.draw()
       return
     }
-    this.opacity =
-      this.xPos - this.leftMargin > 200 && this.xPos < this.canvasLen - 15
-        ? (this.canvasLen - 15 - this.xPos) / 30
-        : this.xPos - this.leftMargin < this.width * 12
-        ? (this.xPos - this.leftMargin) / 30
-        : this.opacity
-    this.opacity = this.opacity > 1 ? 1 : this.opacity < 0 ? 0 : this.opacity
-    this.color = `rgba(255, 255, 255, ${this.opacity})`
     //  Check if note/image is still visible
     if (this.xPos <= this.leftMargin)
       this.xPos += this.xSpace * this.numOfSpaces
     this.draw()
+  }
+
+  setOpacity() {
+    this.opacity =
+      this.xPos - this.leftMargin > 200 && this.xPos < this.canvasLen - 15
+        ? ((this.canvasLen + this.width / 2) - 15 - this.xPos) / 30
+        : this.xPos < this.width * 12
+        ? (this.xPos - this.leftMargin) / 30
+        : this.opacity
+    this.opacity =
+      this.opacity > 1 ? 1 : this.opacity < 0.001 ? 0 : this.opacity
+    this.color = `rgba(255, 255, 255, ${this.opacity.toFixed(3)})`
+    this.ctx.fillStyle = this.color
+    // return this.opacity
   }
 
   draw() {
@@ -106,8 +113,8 @@ class CreateNotes {
   }
 
   drawNote() {
+    this.setOpacity()
     this.ctx.beginPath()
-    this.ctx.fillStyle = this.color
     this.ctx.arc(this.xPos, this.yPos + 10, this.width, 0, Math.PI * 2)
     this.ctx.fill()
     this.ctx.closePath()
@@ -124,6 +131,9 @@ class CreateNotes {
 
   async upAndDownstrokes() {
     // image.src = URL.createObjectURL(blobObj)
+    this.setOpacity()
+    // if (this.opacity < 1 && this.opacity > 0 && this.xPos < this.leftMargin * 3)
+      this.ctx.globalAlpha = this.opacity
     this.ctx.drawImage(
       this.image,
       // space * xSpace + leftMargin - this.width / 2,
@@ -132,6 +142,7 @@ class CreateNotes {
       this.width,
       this.width
     )
+    this.ctx.globalAlpha = 1
   }
 
   async drawRest() {

@@ -101,9 +101,12 @@ export function TabSettings({ children }) {
           notes.forEach(note =>
             note.update(((xSpace / 30) * +notesOnStaff[5]) / 2)
           )
+          focusLine.draw()
         } else {
           notes.forEach(note => note.draw())
           focusLine.update((-(xSpace / 30) * +notesOnStaff[5]) / 2)
+          // console.log(focusLine.xPos > leftMargin + xSpace * 10)
+          // console.log(focusLine.xPos, leftMargin + xSpace * 10)
         }
       }, interval / 30 / 2)
     })
@@ -112,7 +115,7 @@ export function TabSettings({ children }) {
     // JSON.stringify(notesOnStaff),
     // JSON.stringify(exerciseObj),
     lessonIndex,
-    moveTabs
+    moveTabs,
     // startLesson
   ])
 
@@ -127,15 +130,24 @@ export function TabSettings({ children }) {
         : 1500
 
     clearInterval(beatInterval)
-    setBeatInterval(
-      setInterval(() => {
+    setBeatInterval(() => {
+      let count = 0
+      return setInterval(() => {
+        count++
         const sound = newSound.cloneNode()
         sound.volume = metronomeVolume / 100
         sound.play()
-        console.log(focusLinePos)
-        if (focusLinePos < 10) setFocusLinePos(focusLinePos + 1)
-        else setMoveTabs(true)
+        // console.log({focusLinePos})
+        // console.log(focusLinePos, leftMargin + xSpace * 8)
+        // if (focusLinePos >= leftMargin + xSpace * 8) {
+          if (count > 3)
+          setMoveTabs(true)
+        // } else {
+        //   setFocusLinePos(focusLinePos + 1)
+        // }
       }, interval)
+    }
+
     )
 
     clearInterval(setInterval_anime)
@@ -146,6 +158,7 @@ export function TabSettings({ children }) {
   useEffect(() => {
     clearInterval(scrollInterval)
     setScrollInterval(setInterval_anime)
+    setMoveTabs(false)
   }, [exerciseIndex])
 
   return (

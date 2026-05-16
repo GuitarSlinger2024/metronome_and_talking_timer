@@ -66,8 +66,7 @@ function Exercises({ pauseLesson, lessonInfo }) {
   })
 
   useEffect(() => {
-    // console.log(exercises[section][part] || exercises[section])
-    // console.log({part, section, lessonIndex})
+    // exerciseObj includes all the lesson for the current section
     setExerciseObj(exercises[section][part] || exercises[section])
     console.log(exercises[section][part] || exercises[section])
     setExerciseIndex(0)
@@ -86,6 +85,7 @@ function Exercises({ pauseLesson, lessonInfo }) {
   useEffect(() => {
     //  Add vocals
     speechSynthesis.cancel()
+    // exerciseObj includes all the lesson for the current section
     if (exerciseObj) {
       console.log({ exerciseObj })
       const exercise = exerciseObj.lessons[lessonIndex].exercises[exerciseIndex]
@@ -98,6 +98,9 @@ function Exercises({ pauseLesson, lessonInfo }) {
         useLongDesc ? text : text.split(' - ')[0]
       )
       speechSynthesis.speak(utterance)
+      //  Delete white spaces in notes and directions strings
+      exercise[1] = exercise[1].replaceAll(' ', '')
+      exercise[2] = exercise[2].replaceAll(' ', '')
 
       //  dotEquals
       const image = exercise[5] === '1' ? quarterNote : exercise[5] === '2' || exercise[5] === '3' ? eighthNote : sixteenthNote
