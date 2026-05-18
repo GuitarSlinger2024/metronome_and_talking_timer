@@ -4,6 +4,7 @@ import { TabContext } from '../../context/TabContext'
 //  Images
 import upstroke from '../../_img/white_upstroke.png'
 import downstroke from '../../_img/white_downstroke.png'
+import quarterRest from '../../_img/music_notations/white/quarterRest.png'
 import dotQuarterRest from '../../_img/music_notations/white/dotQuarterRest.png'
 import eighthRest from '../../_img/music_notations/white/eighthRest.png'
 import dotEighthRest from '../../_img/music_notations/white/dotEighthRest.png'
@@ -37,18 +38,25 @@ class CreateNotes {
     this.width = 8 //  Just for notes (circles)
     this.opacity = xPos >= this.canvasLen - this.width ? 0 : 1
 
+    //  Initialize some items
     if (this.note === 'u' || this.note === 'd') this.initStrokes()
     if (['e', 'E', 'q', 'Q'].includes(this.note)) this.initRest()
-    //  e - eightRest, E - dotEightRest, q - quarterRest, Q - dotQuarterRest
+    //
+    //         e - eightRest, E - dotEightRest, q - quarterRest, Q - dotQuarterRest
+    //
     if (this.note === 'focusLine') this.initFocusLine()
+    if (this.note === 'barLine') this.initBarLine()
   }
 
   initFocusLine() {
     this.xPos -= 0.5
   }
 
+  initBarLine() {
+    //  Somehow need to cause barlines to fade-in & out
+  }
+
   async initStrokes() {
-    console.log('Initializing rest image, right??? .......')
     const blob = this.note === 'u' ? upstroke : downstroke
     //  The only thing needed for .src = base64 to work is for the image to load
     this.image = await this.Base64ToImage(blob)
@@ -61,6 +69,8 @@ class CreateNotes {
         ? eighthRest
         : this.note === 'Q'
         ? dotQuarterRest
+        : this.note === 'q'
+        ? quarterRest
         : dotEighthRest
     //  The only thing needed for .src = base64 to work is for the image to load
     this.image = await this.Base64ToImage(blob)
@@ -84,7 +94,7 @@ class CreateNotes {
   setOpacity() {
     this.opacity =
       this.xPos - this.leftMargin > 200 && this.xPos < this.canvasLen - 15
-        ? ((this.canvasLen + this.width / 2) - 15 - this.xPos) / 30
+        ? (this.canvasLen + this.width / 2 - 15 - this.xPos) / 30
         : this.xPos < this.width * 12
         ? (this.xPos - this.leftMargin) / 30
         : this.opacity
@@ -92,6 +102,7 @@ class CreateNotes {
       this.opacity > 1 ? 1 : this.opacity < 0.001 ? 0 : this.opacity
     this.color = `rgba(255, 255, 255, ${this.opacity.toFixed(3)})`
     this.ctx.fillStyle = this.color
+    return this.opacity
     // return this.opacity
   }
 
@@ -121,7 +132,9 @@ class CreateNotes {
   }
 
   barLine() {
-    this.ctx.strokeStyle = '#fff7'
+    const op = this.setOpacity()
+    this.ctx.strokeStyle = `#ffffff${op}`
+    // this.ctx.strokeStyle = '#fff7'
     this.ctx.beginPath()
     this.ctx.moveTo(this.xPos + this.xSpace / 2, this.lineHeight + 20 + 10)
     this.ctx.lineTo(this.xPos + this.xSpace / 2, 6 * this.lineHeight + 20 + 10)
@@ -133,7 +146,7 @@ class CreateNotes {
     // image.src = URL.createObjectURL(blobObj)
     this.setOpacity()
     // if (this.opacity < 1 && this.opacity > 0 && this.xPos < this.leftMargin * 3)
-      this.ctx.globalAlpha = this.opacity
+    this.ctx.globalAlpha = this.opacity
     this.ctx.drawImage(
       this.image,
       // space * xSpace + leftMargin - this.width / 2,
@@ -147,14 +160,18 @@ class CreateNotes {
 
   async drawRest() {
     // image.src = URL.createObjectURL(blobObj)
+    this.setOpacity()
+    this.ctx.globalAlpha = this.opacity / 2.5
+    const adjust = this.note === 'q' ? 5 : 0
     this.ctx.drawImage(
       this.image,
       // space * xSpace + leftMargin - this.width / 2,
-      this.xPos - this.width / 2,
+      this.xPos - (this.width / 2) + adjust,
       20 + 10 + this.lineHeight * 2,
       this.width,
       this.lineHeight * 3
     )
+    this.ctx.globalAlpha = 1
   }
 
   async Base64ToImage(base64img, callback) {

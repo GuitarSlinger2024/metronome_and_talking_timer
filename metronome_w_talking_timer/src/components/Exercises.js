@@ -92,8 +92,9 @@ function Exercises({ pauseLesson, lessonInfo }) {
       console.log(exercise)
       let text = exercise[0]
       text = text
-        .replace('1 - e - & - a - 2', '1 e & a 2')
-        .replace('3 - e - & - a - 4', '3 e & a 4')
+        .replaceAll('1 - e - & - a - 2', '1 e & a 2')
+        .replaceAll('3 - e - & - a - 4', '3 e & a 4')
+        .replaceAll('e - & - a', 'e & a')
       let utterance = new SpeechSynthesisUtterance(
         useLongDesc ? text : text.split(' - ')[0]
       )

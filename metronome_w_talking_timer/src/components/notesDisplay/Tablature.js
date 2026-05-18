@@ -51,17 +51,20 @@ function Tablature() {
     render_tablature({
       notesOnStaff: notesOnStaff[1], //  up to where it repeats
       timeSig: notesOnStaff[4], //  example: 3/4
-      notesPerBeat: notesOnStaff[3],
+      notesPerBar: notesOnStaff[3],
       pickDir: notesOnStaff[2] || '',
+      notesPerBeat: +notesOnStaff[5]
     })
   }, [JSON.stringify(notesOnStaff), ctx])
   // }, [notesOnStaff, hidePickDirections])
 
-  function render_tablature({ notesOnStaff, timeSig, notesPerBeat, pickDir }) {
-    console.log({ notesOnStaff, timeSig, notesPerBeat, pickDir, ctx })
+  function render_tablature({ notesOnStaff, timeSig, notesPerBar, pickDir, notesPerBeat}) {
+    console.log({ notesOnStaff, timeSig, notesPerBar, pickDir, ctx, notesPerBeat })
     //  Create focusLine
+    let xPos = notesPerBeat === 3 ? xSpace : 0
+    xPos += leftMargin
     const focusLine = new CreateNotes({
-      xPos: leftMargin,
+      xPos: xPos,
       yPos: null,
       ctx: ctx,
       xSpace,
@@ -87,7 +90,7 @@ function Tablature() {
     }
     const objs = []
     //  Create notes, rests & pick directions
-    const numOfBeats = +notesPerBeat
+    const numOfBeats = +notesPerBar
     let numOfSpaces = notes.length
     for (let spaceNum = 0; spaceNum < numOfSpaces; spaceNum++) {
       //  Draw notes
@@ -120,10 +123,11 @@ function Tablature() {
       objs.push(newDirection)
 
       // Draw barlines
-      if (spaceNum > 0 && spaceNum % numOfBeats === numOfBeats - 1) {
+      if (numOfBeats !== 0 && (spaceNum) % numOfBeats === (numOfBeats) % numOfBeats) {
+        console.log('%c - ' + spaceNum + ' - ' + numOfBeats, 'color:green')
         // verticalLine(spaceNum - 0.5)
         const barLine = new CreateNotes({
-          xPos: spaceNum * xSpace + leftMargin - 0.5,
+          xPos: (spaceNum + 3) * xSpace + leftMargin - 0.5,
           yPos: null,
           ctx: ctx,
           xSpace,
@@ -134,6 +138,8 @@ function Tablature() {
           mt,
         })
         objs.push(barLine)
+      } else {
+        console.log('%c - ' + spaceNum + ' - ' + numOfBeats, 'color:red')
       }
     }
     console.log('%cSetting note objs', 'font-weight: 900', { objs })

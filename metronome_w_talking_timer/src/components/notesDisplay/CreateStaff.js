@@ -4,7 +4,7 @@ function CreateStaff(signature, ctx, lineHeight) {
   ctx.clearRect(0, 0, 1000, 130)
   //  Time Signature
   ctx.font = 'bold 3rem Arial'
-  ctx.textAlign = 'left'
+  ctx.textAlign = 'center'
   ctx.textBaseline = 'middle'
   ctx.fillStyle = 'white'
   // console.log({

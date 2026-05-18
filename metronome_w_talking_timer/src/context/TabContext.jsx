@@ -66,10 +66,10 @@ export function TabSettings({ children }) {
 
   useEffect(() => {
     if (!exerciseObj) return
-    console.log({ exerciseObj })
-    console.log(
-      exerciseObj?.lessons[lessonIndex]?.exercises[exerciseIndex] || []
-    )
+    // console.log({ exerciseObj })
+    // console.log(
+    //   exerciseObj?.lessons[lessonIndex]?.exercises[exerciseIndex] || []
+    // )
     setNotesOnStaff(
       exerciseObj?.lessons[lessonIndex]?.exercises[exerciseIndex] || []
     )
@@ -140,15 +140,15 @@ export function TabSettings({ children }) {
         // console.log({focusLinePos})
         // console.log(focusLinePos, leftMargin + xSpace * 8)
         // if (focusLinePos >= leftMargin + xSpace * 8) {
-          if (count > 3)
+        if (count > 4 / +notesOnStaff[5] - 1) {
           setMoveTabs(true)
+          // console.log(notesOnStaff)
+        }
         // } else {
         //   setFocusLinePos(focusLinePos + 1)
         // }
       }, interval)
-    }
-
-    )
+    })
 
     clearInterval(setInterval_anime)
     clearInterval(scrollInterval)
