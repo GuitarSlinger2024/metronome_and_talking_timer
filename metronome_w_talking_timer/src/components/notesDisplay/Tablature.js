@@ -18,9 +18,10 @@ function Tablature() {
     notesOnStaff,
     lineHeight,
     mt,
-    setFocusLine,
+    setFocusLine
   } = useContext(TabContext)
-  const { hidePickDirections, setHidePickDirections } =
+  const { hidePickDirections,
+    lesson, setHidePickDirections } =
     useContext(SettingsContext)
 
   const [canvas, setCanvas] = useState(null)
@@ -55,7 +56,7 @@ function Tablature() {
       pickDir: notesOnStaff[2] || '',
       notesPerBeat: +notesOnStaff[5]
     })
-  }, [JSON.stringify(notesOnStaff), ctx])
+  }, [JSON.stringify(notesOnStaff), ctx, lesson])
   // }, [notesOnStaff, hidePickDirections])
 
   function render_tablature({ notesOnStaff, timeSig, notesPerBar, pickDir, notesPerBeat}) {

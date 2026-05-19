@@ -64,7 +64,7 @@ export const exercises = {
             '1', // notes per beat
           ],
           [
-            'Exercise 2 - Sweep up and down five strings, two notes per beat, three beats per measure. Skip the last half beat.',
+            'Exercise 2 - Sweep up and down all five strings, two notes per beat. Skip the last half beat.',
             '54321e12345e',
             'd-----u-----',
             '6', // notes per measure
@@ -85,7 +85,7 @@ export const exercises = {
         lesson: 2,
         exercises: [
           [
-            'Exercise 1 - Sweep up and down five strings, one note per beat.',
+            'Exercise 1 - Sweep up and down all five strings, one note per beat.',
             '5432112345',
             'd----u----',
             '5', // notes per measure
@@ -93,15 +93,15 @@ export const exercises = {
             '1', // notes per beat
           ],
           [
-            'Exercise 2 - Pick one note per beat, use inside picking to change directions.',
+            'Exercise 2 - Use inside picking to change directions.',
             '54321234',
-            'ud--du--',
+            '-d---u--',
             '4', // notes per measure
             '4/4', // time signature
             '1', // notes per beat
           ],
           [
-            'Exercise 3 - Pick one note per beat, use outside picking to change directions.',
+            'Exercise 3 - Use outside picking to change directions.',
             '54321234',
             'd---u---',
             '4', // notes per measure
@@ -109,23 +109,23 @@ export const exercises = {
             '1', // notes per beat
           ],
           [
-            "Exercise 4 - Sweep up and down five strings, two notes per beat. Skip the '&' of the 3rd beat.",
-            '54321x12345x',
+            "Exercise 4 - Play two notes per beat. Skip the '&' of the 3rd beat.",
+            '54321e12345e',
             'd-----u-----',
             '6', // notes per measure
             '3/4', // time signature
             '2', // notes per beat
           ],
           [
-            'Exercise 5 - Pick two notes per beat. Use inside picking to change directions.',
+            'Exercise 5 - Play two notes per beat, use inside picking to change directions.',
             '54321234',
-            'ud--du--',
+            '-d---u--',
             '8', // notes per measure
             '4/4', // time signature
             '2', // notes per beat
           ],
           [
-            'Exercise 6 - Pick two notes per beat. Use outside picking to change directions.',
+            'Exercise 6 - Play two notes per beat, use outside picking to change directions.',
             '54321234',
             'd---u---',
             '8', // notes per measure
@@ -133,23 +133,23 @@ export const exercises = {
             '2', // notes per beat
           ],
           [
-            'Exercise 7 - Sweep up and down five strings, four notes per beat. Count: 1 - e - & - a - 2 - (e - & - a) - 3 - e - & - a - 4 - (e - & - a)',
-            '54321xxx12345xxx',
-            'd----xxxu----xxx',
+            'Exercise 7 - Play four notes per beat. Count: 1 - e - & - a - 2 - (pause) - 3 - e - & - a - 4',
+            '54321-Q-12345-Q-',
+            'd-------u-------',
             '16', // notes per measure
             '4/4', // time signature
             '4', // notes per beat
           ],
           [
-            'Exercise 8 - Pick four notes per beat. Use inside picking to change directions.',
+            'Exercise 8 - Play four notes per beat, use inside picking to change directions.',
             '5432123454321234',
-            'ud--du--',
+            '-d---u--',
             '16', // notes per measure
             '4/4', // time signature
             '4', // notes per beat
           ],
           [
-            'Exercise 9 - Pick four notes per beat. Use outside picking to change directions.',
+            'Exercise 9 - Play four notes per beat, use outside picking to change directions.',
             '5432123454321234',
             'd---u---',
             '16', // notes per measure
@@ -157,9 +157,9 @@ export const exercises = {
             '4', // notes per beat
           ],
           [
-            'Exercise 10 - Pick four notes per beat. Freely alternate between inside and outside picking',
+            'Exercise 10 - Alternate freely between inside and outside picking; get a feeling for both.',
             '5432123454321234',
-            'ud--du---',
+            '---------',
             '16', // notes per measure
             '4/4', // time signature
             '4', // notes per beat
@@ -170,39 +170,39 @@ export const exercises = {
         lesson: 3,
         exercises: [
           [
-            'Exercise 1 - Sweep up five strings then down all five strings, one note per beat. The metronome is set to 80bpm for this whole lesson.',
-            '54321-12345-',
+            'Exercise 1 - Stay relaxed while sweeping up all five strings, then down all five strings.',
+            '54321 12345',
             'd----u----',
-            '6', // notes per measure
+            '5', // notes per measure
             '5/4', // time signature
             '1', // notes per beat
           ],
           [
-            'Exercise 2 - Sweep up five strings then down all five strings Pick two notes per beat and skip the last half beat.',
-            '54321-12345-',
-            'd-----u-----',
+            'Exercise 2 - Play two notes per beat and skip the last half beat.',
+            '54321e 12345e',
+            'd----- u-----',
             '6', // notes per measure
             '3/4', // time signature
             '2', // notes per beat
           ],
           [
-            'Exercise 3 - One sweep at a time, four notes per beat. Count: 1 - e - & - a - 2 (e - & - a) 3 - e - & - a - 4.',
-            '54321---12345---',
+            'Exercise 3 - One sweep at a time, four notes per beat. Count: 1 - e - & - a - 2 (pause) 3 - e - & - a - 4.',
+            '54321-Q-12345-Q-',
             'd-------u-------',
             '16', // notes per measure
             '4/4', // time signature
             '4', // notes per beat
           ],
           [
-            'Exercise 4 - One sweep at a time, two notes per beat.',
-            '54321-12345-',
-            'd---u-u---d-',
+            'Exercise 4 - Two notes per beat, cross-pick the last note.',
+            '54321e 12345e',
+            'd---u- u---d-',
             '6', // notes per measure
             '3/4', // time signature
             '2', // notes per beat
           ],
           [
-            'Exercise 5 - One sweep at a time, four notes per beat.',
+            'Exercise 5 - Four notes per beat, cross-pick the last note.',
             '54321---12345---',
             'd---u---u---d---',
             '16', // notes per measure
@@ -210,7 +210,7 @@ export const exercises = {
             '4', // notes per beat
           ],
           [
-            'Exercise 6 - Use inside picking to pick one extra note. Play two notes per beat.',
+            'Exercise 6 - Two notes per beat, use inside picking to pick one extra note.',
             '543212--123454--',
             'd----u--u----d--',
             '8', // notes per measure
@@ -218,7 +218,7 @@ export const exercises = {
             '2', // notes per beat
           ],
           [
-            'Exercise 7 - Use inside picking to pick one extra note. Play four notes per beat.',
+            'Exercise 7 - Four notes per beat, use inside picking to pick one extra note.',
             '543212--123454--',
             'd----u--u----d--',
             '16', // notes per measure
@@ -226,7 +226,7 @@ export const exercises = {
             '4', // notes per beat
           ],
           [
-            'Exercise 8 - Use outside picking, then pick one extra note. Play two notes per beat.',
+            'Exercise 8 - Two notes per beat. Use outside picking, then pick one extra note.',
             '543212--123454--',
             'd---u---u---d---',
             '8', // notes per measure
@@ -234,7 +234,7 @@ export const exercises = {
             '2', // notes per beat
           ],
           [
-            'Exercise 9 - Use outside picking to pick one extra note. Play four notes per beat.',
+            'Exercise 9 - Four notes per beat. Use outside picking, then pick one extra note.',
             '543212--123454--',
             'd---u---u---d---',
             '16', // notes per measure
@@ -242,7 +242,7 @@ export const exercises = {
             '4', // notes per beat
           ],
           [
-            'Exercise 10 - Play four notes per beat with the extra note added in. Alternate freely between inside and outside picking.',
+            'Exercise 10 - Alternate freely between inside and outside picking, remember to avoid any tension.',
             '543212--123454--',
             'd---u---u---d---',
             '16', // notes per measure
@@ -397,7 +397,7 @@ export const exercises = {
               '1', // notes per beat
             ],
             [
-              'Exercise 7 - Pick four notes per string',
+              'Exercise 7 - Play four notes per string',
               '6666 5555 4444 3333 2222 1111 2222 3333 4444 5555',
               'dudu',
               '4', // notes per measure
@@ -461,7 +461,7 @@ export const exercises = {
               '3', // notes per beat
             ],
             [
-              'Exercise 15 - Rhythm exercise - pick two notes per beat, count the beats.',
+              'Exercise 15 - Rhythm exercise - play two notes per beat, count the beats.',
               '666555444333 222111222333 444555 666555444333 222111222333 444555',
               'du',
               '8', // notes per measure
@@ -474,7 +474,7 @@ export const exercises = {
           lesson: 2,
           exercises: [
             [
-              'Exercise 1 - Pick four notes per string, skip one string',
+              'Exercise 1 - Play four notes per string, skip one string',
               '6666 4444 5555 3333 4444 2222 3333 1111 3333 2222 4444 3333 5555 4444',
               'dudu',
               '4', // notes per measure
@@ -482,7 +482,7 @@ export const exercises = {
               '1', // notes per beat
             ],
             [
-              'Exercise 2 - Pick two notes per string, skip one string',
+              'Exercise 2 - Play two notes per string, skip one string',
               '6644 5533 4422 331133 2244 3355',
               'dudu',
               '4', // notes per measure
@@ -567,7 +567,7 @@ export const exercises = {
               '1', // notes per beat
             ],
             [
-              'Exercise 2 - Pick four notes per string. Skip two strings',
+              'Exercise 2 - Play four notes per string. Skip two strings',
               '66663333 55552222 444411114444 22225555 3333 66663333 55552222 444411114444 22225555 3333',
               'dudu',
               '4', // notes per measure
@@ -575,7 +575,7 @@ export const exercises = {
               '1', // notes per beat
             ],
             [
-              'Exercise 3 - Pick two notes per string. Skip two strings',
+              'Exercise 3 - Play two notes per string. Skip two strings',
               '66335522 441144 225533',
               'dudu',
               '4', // notes per measure
@@ -644,7 +644,7 @@ export const exercises = {
           lesson: 4,
           exercises: [
             [
-              'Exercise 1 - Pick four notes per string. Skip three strings.',
+              'Exercise 1 - Play four notes per string. Skip three strings.',
               '6666 2222 5555 1111 5555 2222',
               'dudu',
               '4', // notes per measure
@@ -652,7 +652,7 @@ export const exercises = {
               '1', // notes per beat
             ],
             [
-              'Exercise 2 - Pick two notes per string. Skip three strings.',
+              'Exercise 2 - Play two notes per string. Skip three strings.',
               '6622 5511 5522',
               'dudu',
               '4', // notes per measure
@@ -729,7 +729,7 @@ export const exercises = {
           lesson: 5,
           exercises: [
             [
-              'Exercise 1 - Pick four notes per string. Skip four strings.',
+              'Exercise 1 - Play four notes per string. Skip four strings.',
               '66661111',
               'dudu',
               '4', // notes per measure
@@ -737,7 +737,7 @@ export const exercises = {
               '1', // notes per beat
             ],
             [
-              'Exercise 2 - Pick two notes per string. Skip four strings.',
+              'Exercise 2 - Play two notes per string. Skip four strings.',
               '6611',
               'dudu',
               '4', // notes per measure
@@ -960,7 +960,7 @@ export const exercises = {
               '3', // notes per beat
             ],
             [
-              "Exercise 8 - Pick two notes per beat. For an extra challenge, try counting 1 & 2 & 3 & 4 &. It's different without alternate picking.",
+              "Exercise 8 - Play two notes per beat. For an extra challenge, try counting 1 & 2 & 3 & 4 &. It's different without alternate picking.",
               '666555 444333 222 111 222333 444555 666555 444333 222 111 222333 444555',
               '-dud ud-u d-ud -ud- udud u-du -du- du',
               '8', // notes per measure
@@ -1614,7 +1614,7 @@ export const descriptions = {
         lesson: 2,
         title: 'Inside / Outside Picking',
         description: [
-          'This lesson practices sweeps with inside / outside picking. Pay close attention to how you hold the pick so no unwanted tension develops. Use this as a foundation for the next two lessons.',
+          'This lesson practices sweeps with inside / outside picking. Pay close attention to keep any unwanted tension from developing. Use this as a foundation for the next two lessons.',
         ],
         numOfExercises: 10,
         minutes: 3,
@@ -1623,7 +1623,7 @@ export const descriptions = {
         lesson: 3,
         title: 'Changing Directions',
         description: [
-          'This lesson practices 1, 2 and 4 notes per beat at double the tempo (80bpm). The challenge is to keep a smooth technique throughout the entire lesson.',
+          'This lesson practices 1, 2 and 4 notes per beat at double the tempo (80bpm). Try keeping a smooth technique, without any tension, throughout the entire lesson.',
         ],
         numOfExercises: 10,
         minutes: 3,
@@ -1633,7 +1633,7 @@ export const descriptions = {
         lesson: 4,
         title: 'Building Speed',
         description: [
-          'Sweeping the same four strings should make it a little easier to create smooth sweeps (no inside or outside picking). Practicing on the lower (thicker) strings can add just a little extra resistance to each sweep.',
+          'Sweeping the same four strings should make it a little easier to change directions. Practicing on the lower (thicker) strings can add just a little extra resistance to each sweep.',
         ],
         numOfExercises: 10,
         minutes: 3,
@@ -1644,8 +1644,8 @@ export const descriptions = {
   'Picking Patterns': {
     title: 'Section 2: Picking Patterns',
     description: [
-      'These lessons are about gaining speed AND accuracy with things like string skipping by going VERY SLOWLY and really paying attention. Remember, slow is smooth... smooth is fast! The definitions of these things may vary from one source of instruction to another. The definitions given here are for easier',
       "Three different approaches are taken here: alternate picking, economy picking and cross picking. In this study a 'sweep' is used any time two or more notes are picked in the same direction.",
+      'These lessons are about gaining speed AND accuracy with things like string skipping by going VERY SLOWLY and really paying attention. Remember, slow means smooth... smooth means fast! Some definitions may vary from one source to another. The definitions given here are not necessarily definitive.',
     ],
     'Alternate Picking': {
       title: 'Part 1: Alternate Picking',

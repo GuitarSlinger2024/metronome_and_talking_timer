@@ -182,16 +182,21 @@
   position: relative;
 }
 
+#main-display .noteValue {
+  position: absolute;
+  top: .5em;
+  left: 2em;
+  width: 8em;
+}
+
 #main-display #noteLegend {
   --dot-size: 0.6em;
   align-items: center;
   display: flex;
+  width: fit-content;
+  gap: .5em;
   height: 1.35em;
   justify-content: space-between;
-  left: 3em;
-  position: absolute;
-  top: 0.5em;
-  width: 3em;
 }
 
 #main-display .smallCircle {
@@ -208,6 +213,18 @@
 
 #main-display span {
   font-weight: 100;
+}
+
+#main-display .showNotesPerBeat {
+  display: flex;
+  font-size: .86em;
+  gap: .5em;
+  margin-bottom: .4em;
+}
+
+#main-display .numOfNotes {
+  /* text-decoration: underline; */
+  font-weight: 700;
 }
 
 .exercise {

@@ -3,16 +3,9 @@ import React, { useContext, useEffect, useState } from 'react'
 import { descriptions } from '../lessonData.js'
 import { SettingsContext } from '../context/SettingsContext.jsx'
 
-function LessonInfo({
-  section,
-  part,
-  lesson,
-  lessonInfo,
-  setLessonInfo,
-  bpm,
-  getExerciseRecords,
-}) {
-  const {correctTimeFormat} = useContext(SettingsContext)
+function LessonInfo({ lessonInfo, setLessonInfo, bpm, getExerciseRecords }) {
+  const { correctTimeFormat, section, part, lesson } =
+    useContext(SettingsContext)
   useEffect(() => {
     if (Boolean(!lesson)) {
       if (section === 'Picking Patterns' && part)

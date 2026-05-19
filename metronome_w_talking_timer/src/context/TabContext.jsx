@@ -35,13 +35,16 @@ export function TabSettings({ children }) {
   const [moveTabs, setMoveTabs] = useState(false)
 
   useEffect(() => {
-    setLessonIndex(() => {
-      const lessonsObj = part
-        ? lessons['Picking Patterns'][part]
-        : lessons['Sweep Picking']
-      return lessonsObj.findIndex(lssn => lssn === lesson)
-    })
+    const index = getLessonIndex()
+    setLessonIndex(index)
   }, [lessons])
+
+  function getLessonIndex() {
+    const lessonsObj = part
+      ? lessons['Picking Patterns'][part]
+      : lessons['Sweep Picking']
+    return lessonsObj.findIndex(lssn => lssn === lesson)
+  }
 
   //                    UseEffect
   useEffect(() => {
@@ -61,7 +64,7 @@ export function TabSettings({ children }) {
     metronomeSound,
     noteObjs,
     // ctx,
-    // notesOnStaff,
+    notesOnStaff,
   ])
 
   useEffect(() => {
@@ -73,17 +76,25 @@ export function TabSettings({ children }) {
     setNotesOnStaff(
       exerciseObj?.lessons[lessonIndex]?.exercises[exerciseIndex] || []
     )
-  }, [JSON.stringify(exerciseObj), exerciseIndex, startLesson])
+  }, [JSON.stringify(exerciseObj), exerciseIndex, startLesson, lesson])
 
   useEffect(() => {
-    console.log('updating', { noteObjs })
+    console.log('updating')
     if (
       !noteObjs ||
       !notesOnStaff?.length ||
-      Object.keys(exerciseObj).length === 0 ||
-      !startLesson
-    )
+      Object.keys(exerciseObj).length === 0 
+      // || !startLesson
+    ) {
+      console.log({
+        1: noteObjs,
+        2: notesOnStaff,
+        3: !exerciseObj ? 'undef' : Object.keys(exerciseObj),
+        startLesson,
+      })
       return
+    }
+    console.log('%cupdating', 'color: green')
 
     setSetInterval_anime(() => {
       clearInterval(setInterval_anime)
@@ -112,11 +123,12 @@ export function TabSettings({ children }) {
     })
   }, [
     JSON.stringify(noteObjs),
-    // JSON.stringify(notesOnStaff),
-    // JSON.stringify(exerciseObj),
+    JSON.stringify(notesOnStaff),
+    JSON.stringify(exerciseObj),
     lessonIndex,
     moveTabs,
-    // startLesson
+    startLesson,
+    lesson,
   ])
 
   //                    Functions
@@ -159,12 +171,11 @@ export function TabSettings({ children }) {
     clearInterval(scrollInterval)
     setScrollInterval(setInterval_anime)
     setMoveTabs(false)
-  }, [exerciseIndex])
+  }, [exerciseIndex, lesson])
 
   return (
     <TabContext.Provider
       value={{
-        runMetronome,
         leftMargin,
         startLesson,
         setStartLesson,
