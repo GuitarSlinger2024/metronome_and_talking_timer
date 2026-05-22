@@ -12,6 +12,11 @@ export function TabSettings({ children }) {
   //                    Define variable
   const xSpace = 40
 
+  useEffect(() =>
+  {
+    console.log('lesson changed here too', lesson)
+  }, [lesson])
+
   //                    useState()
   const [scrollInterval, setScrollInterval] = useState(null)
   const [beatInterval, setBeatInterval] = useState(null)
@@ -200,6 +205,7 @@ export function TabSettings({ children }) {
         setInterval_anime,
         setSetInterval_anime,
         setFocusLine,
+        lesson
       }}
     >
       {children}

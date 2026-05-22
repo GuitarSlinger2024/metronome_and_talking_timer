@@ -7,7 +7,8 @@ import CreateNotes from './CreateNotes'
 import { Circle } from '../../classes/circle.class'
 import { TabContext } from '../../context/TabContext'
 
-function Tablature() {
+function Tablature()
+{
   //  xSpace is distance between notes (space, x-axis)
   const {
     xSpace,
@@ -18,15 +19,19 @@ function Tablature() {
     notesOnStaff,
     lineHeight,
     mt,
-    setFocusLine
+    setFocusLine,
+    lesson,
   } = useContext(TabContext)
-  const { hidePickDirections,
-    lesson, setHidePickDirections } =
-    useContext(SettingsContext)
+  
+  const {
+    hidePickDirections,
+    setHidePickDirections
+  } = useContext(SettingsContext)
 
   const [canvas, setCanvas] = useState(null)
 
-  useEffect(() => {
+  useEffect(() =>
+  {
     console.log('start')
     const canvasEl = document.getElementById('canvas')
     const ctx = canvasEl.getContext('2d')
@@ -34,7 +39,8 @@ function Tablature() {
     setCtx(ctx)
   }, [])
 
-  useEffect(() => {
+  useEffect(() =>
+  {
     // console.log('canvas and ctx are set up')
     if (!ctx || !canvas) return
     canvas.width = 1000
@@ -43,8 +49,14 @@ function Tablature() {
     ctx.strokeStyle = 'white'
   }, [ctx, canvas])
 
+  useEffect(() =>
+  {
+    console.log('%clesson changed', 'font-weight: 900;color:cyan', lesson)
+  }, [lesson])
+
   //           useEffect:  New staff is set-up
-  useEffect(() => {
+  useEffect(() =>
+  {
     if (!notesOnStaff || !ctx) return
     console.log('Creating the staff')
     CreateStaff(notesOnStaff[4], ctx, lineHeight)
@@ -56,10 +68,11 @@ function Tablature() {
       pickDir: notesOnStaff[2] || '',
       notesPerBeat: +notesOnStaff[5]
     })
-  }, [JSON.stringify(notesOnStaff), ctx, lesson])
+  }, [JSON.stringify(notesOnStaff), notesOnStaff, ctx, lesson])
   // }, [notesOnStaff, hidePickDirections])
 
-  function render_tablature({ notesOnStaff, timeSig, notesPerBar, pickDir, notesPerBeat}) {
+  function render_tablature({ notesOnStaff, timeSig, notesPerBar, pickDir, notesPerBeat })
+  {
     console.log({ notesOnStaff, timeSig, notesPerBar, pickDir, ctx, notesPerBeat })
     //  Create focusLine
     let xPos = notesPerBeat === 3 ? xSpace : 0
@@ -85,7 +98,8 @@ function Tablature() {
     let notes = []
     while (notes.length < 24) notes.push(...noteList)
     let directions = []
-    while (directions.length < notes.length) {
+    while (directions.length < notes.length)
+    {
       directions.push(directionsList[0])
       directionsList = [...directionsList.splice(1), directionsList[0]]
     }
@@ -93,7 +107,8 @@ function Tablature() {
     //  Create notes, rests & pick directions
     const numOfBeats = +notesPerBar
     let numOfSpaces = notes.length
-    for (let spaceNum = 0; spaceNum < numOfSpaces; spaceNum++) {
+    for (let spaceNum = 0; spaceNum < numOfSpaces; spaceNum++)
+    {
       //  Draw notes
       const note = notes[spaceNum]
       const newNote = new CreateNotes({
@@ -124,7 +139,8 @@ function Tablature() {
       objs.push(newDirection)
 
       // Draw barlines
-      if (numOfBeats !== 0 && (spaceNum) % numOfBeats === (numOfBeats) % numOfBeats) {
+      if (numOfBeats !== 0 && (spaceNum) % numOfBeats === (numOfBeats) % numOfBeats)
+      {
         console.log('%c - ' + spaceNum + ' - ' + numOfBeats, 'color:green')
         // verticalLine(spaceNum - 0.5)
         const barLine = new CreateNotes({
@@ -139,7 +155,8 @@ function Tablature() {
           mt,
         })
         objs.push(barLine)
-      } else {
+      } else
+      {
         console.log('%c - ' + spaceNum + ' - ' + numOfBeats, 'color:red')
       }
     }
