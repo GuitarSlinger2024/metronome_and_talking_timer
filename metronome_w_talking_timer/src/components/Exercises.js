@@ -31,8 +31,9 @@ function Exercises({ pauseLesson, lessonInfo })
     exerciseIndex,
     setExerciseIndex,
     lessonIndex,
+    lesson
   } = useContext(TabContext)
-  const { section, part, lesson, useLongDesc } = useContext(SettingsContext)
+  const { section, part, useLongDesc } = useContext(SettingsContext)
 
   const [finished, setFinished] = useState(new Set())
   const [dotEqualsImg, setDotEqualsImg] = useState(quarterNote)
@@ -68,13 +69,7 @@ function Exercises({ pauseLesson, lessonInfo })
     initialTime: 0,
   })
 
-  useEffect(() =>
-  {
-    // exerciseObj includes all the lesson for the current section
-    setExerciseObj(exercises[section][part] || exercises[section])
-    console.log(exercises[section][part] || exercises[section])
-    setExerciseIndex(0)
-  }, [section, part])
+
 
   useEffect(() =>
   {
