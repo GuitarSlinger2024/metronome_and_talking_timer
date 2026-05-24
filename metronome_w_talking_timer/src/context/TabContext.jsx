@@ -12,12 +12,7 @@ export function TabSettings({ children }) {
   //                    Define variable
   const xSpace = 40
 
-<<<<<<< HEAD
   useEffect(() => {
-=======
-  useEffect(() =>
-  {
->>>>>>> 4db97159cc617f4fe6c813a285660c9ea4389a30
     console.log('lesson changed here too', lesson)
   }, [lesson])
 
@@ -44,13 +39,10 @@ export function TabSettings({ children }) {
   const [moveTabs, setMoveTabs] = useState(false)
 
   useEffect(() => {
+    if (!lesson) return
     const index = getLessonIndex()
     setLessonIndex(index)
-<<<<<<< HEAD
   }, [lessons, lesson])
-=======
-  }, [lessons])
->>>>>>> 4db97159cc617f4fe6c813a285660c9ea4389a30
 
   function getLessonIndex() {
     const lessonsObj = part
@@ -96,11 +88,7 @@ export function TabSettings({ children }) {
     if (
       !noteObjs ||
       !notesOnStaff?.length ||
-<<<<<<< HEAD
       Object.keys(exerciseObj).length === 0
-=======
-      Object.keys(exerciseObj).length === 0 
->>>>>>> 4db97159cc617f4fe6c813a285660c9ea4389a30
       // || !startLesson
     ) {
       console.log({
@@ -166,20 +154,7 @@ export function TabSettings({ children }) {
         const sound = newSound.cloneNode()
         sound.volume = metronomeVolume / 100
         sound.play()
-<<<<<<< HEAD
         if (count > 4 / +notesOnStaff[5] - 1) setMoveTabs(true)
-=======
-        // console.log({focusLinePos})
-        // console.log(focusLinePos, leftMargin + xSpace * 8)
-        // if (focusLinePos >= leftMargin + xSpace * 8) {
-        if (count > 4 / +notesOnStaff[5] - 1) {
-          setMoveTabs(true)
-          // console.log(notesOnStaff)
-        }
-        // } else {
-        //   setFocusLinePos(focusLinePos + 1)
-        // }
->>>>>>> 4db97159cc617f4fe6c813a285660c9ea4389a30
       }, interval)
     })
 
@@ -221,11 +196,7 @@ export function TabSettings({ children }) {
         setInterval_anime,
         setSetInterval_anime,
         setFocusLine,
-<<<<<<< HEAD
         lesson,
-=======
-        lesson
->>>>>>> 4db97159cc617f4fe6c813a285660c9ea4389a30
       }}
     >
       {children}
