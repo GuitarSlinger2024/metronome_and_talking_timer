@@ -40,19 +40,12 @@ function Tablature()
 
   useEffect(() =>
   {
-    // console.log('canvas and ctx are set up')
     if (!ctx || !canvas) return
     canvas.width = 1000
     canvas.height = 130
     ctx.lineWidth = 2.5
     ctx.strokeStyle = 'white'
   }, [ctx, canvas])
-
-  useEffect(() =>
-  {
-    console.log('%clesson changed', 'font-weight: 900;color:cyan', lesson)
-  }, [JSON.stringify(notesOnStaff), notesOnStaff, ctx,lesson])
-  // }, [lesson])
 
   //           useEffect:  New staff is set-up
   useEffect(() =>
@@ -141,7 +134,6 @@ function Tablature()
       // Draw barlines
       if (numOfBeats !== 0 && (spaceNum) % numOfBeats === (numOfBeats) % numOfBeats)
       {
-        console.log('%c - ' + spaceNum + ' - ' + numOfBeats, 'color:green')
         // verticalLine(spaceNum - 0.5)
         const barLine = new CreateNotes({
           xPos: (spaceNum + 3) * xSpace + leftMargin - 0.5,
@@ -155,9 +147,6 @@ function Tablature()
           mt,
         })
         objs.push(barLine)
-      } else
-      {
-        console.log('%c - ' + spaceNum + ' - ' + numOfBeats, 'color:red')
       }
     }
     console.log('%cSetting note objs', 'font-weight: 900', { objs })

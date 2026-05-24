@@ -48,7 +48,6 @@ function GetRecordsByDate({ logData }) {
                   className="data"
                 >
                   {listByDate[date].map((exercise, e) => {
-                    // console.log({ time: exercise.time.split(' at ')[1] })
                     return (
                       <li key={e}>
                         {`${exercise.time.split(' at ')[1]} - 

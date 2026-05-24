@@ -5,51 +5,64 @@
   margin: 3em auto;
   --text-color: #2e3440;
   --background-color: white;
-  --opt-hover: hsla(0, 0%, 0%, .1);
-  transition: .3s;
+  --opt-hover: hsla(0, 0%, 0%, 0.1);
+  transition: 0.3s;
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
   background-color: var(--background-color);
-  border: .1em dotted var(--background-color);
+  border: 0.1em dotted var(--background-color);
 }
 
 .App.dark {
   --text-color: white;
   --background-color: #2e3440;
-  --opt-hover: hsla(0, 0%, 100%, .2);
-  
+  --opt-hover: hsla(0, 0%, 100%, 0.2);
+
   color: white;
   scrollbar-color: rgb(210, 210, 210) rgb(46, 54, 69) !important;
 }
 
-#listBtn,
-#lightModeBtn {
-  position: absolute;
-  top: .3em;
-  right: .5em;
-  height: 2em;
-  filter: brightness(0);
-  z-index: 1000;
+#lightModeBtn,
+#listBkBtn,
+#listBtn {
   cursor: pointer;
+  filter: brightness(0);
+  height: 2em;
+  position: absolute;
+  right: 1.7em;
+  top: 0.7em;
+  z-index: 1000;
+}
+
+#listBkBtn,
+#listBtn {
+  top: 0.5em;
+  left: 0.7em;
+  height: 1.5em;
+  width: fit-content;
 }
 
 #listBtn {
-  top: .5em;
-  left: .7em;
-  height: 1.5em;
+  top: 1em;
+  left: 2em;
   transform: rotateY(180deg);
 }
 
+#listBkBtn img {
+  transform: scale(0.5);
+  height: 100%;
+}
+
+.dark #listBkBtn,
 .dark #listBtn,
 .dark #lightModeBtn {
-  filter: brightness(100%)
+  filter: brightness(100%);
 }
 
 .dark .invertFromBlack {
-  filter: grayscale(100%)
+  filter: grayscale(100%);
 }
-
 
 section {
   display: flex;
@@ -67,7 +80,7 @@ section {
   display: flex;
   height: 15.2em;
   width: fit-content;
-  margin: 0 auto .7em;
+  margin: 0 auto 0.7em;
 
   user-select: none;
   -moz-user-select: none;
@@ -84,9 +97,8 @@ section {
   -webkit-user-select: none;
 }
 
-
 .disable {
-  opacity: .3;
+  opacity: 0.3;
   pointer-events: none;
 }
 
@@ -105,14 +117,14 @@ main {
   display: flex;
   flex-wrap: wrap;
   width: 92%;
-  font-size: .95em;
+  font-size: 0.95em;
   justify-content: space-between;
   margin: auto;
   --section-title: #0a7ea5;
   --exercise-title: #009000;
   --by-day: rgb(208, 176, 0);
   --track-color: rgb(189, 189, 189);
-  --thumb-color: var(var(--section-title))
+  --thumb-color: var(var(--section-title));
 }
 
 .dark main {
@@ -127,14 +139,14 @@ main {
   text-align: center;
   text-decoration: underline;
   width: 100%;
-  margin: .7em;
+  margin: 0.7em;
   font-size: 1.8em;
 }
 
 main .listTitle {
   font-size: 1.3em;
   text-decoration: underline;
-  margin-bottom: .7em;
+  margin-bottom: 0.7em;
   text-align: center;
 }
 
@@ -165,7 +177,7 @@ main .listTitle {
 .day {
   text-decoration: underline;
   color: var(--by-day);
-  font-size: .9em;
+  font-size: 0.9em;
 }
 .day:not(:first-child) {
   margin-top: 1em;
@@ -174,57 +186,57 @@ main .listTitle {
 .exerciseTitle {
   text-decoration: underline;
   color: var(--exercise-title);
-  margin: .5em 0 .25em;
+  margin: 0.5em 0 0.25em;
   margin-left: 1em;
 }
 
 ul.data {
-  margin-bottom: .2em;
+  margin-bottom: 0.2em;
   margin-left: 1em;
 }
 
 ul.data li {
   display: flex;
   justify-content: space-between;
-  font-size: .9em;
+  font-size: 0.9em;
   list-style: none;
-  margin-left: .5em;
+  margin-left: 0.5em;
 }
 
 .list2 ul.data li {
   justify-content: flex-start;
-  margin-top: .3em;
+  margin-top: 0.3em;
 }
 
 .scroller {
   --scrollbar-color-thumb: var(--thumb-color);
   --scrollbar-color-track: var(--track-color);
   --scrollbar-width: thin;
-  --scrollbar-width-legacy: .7em;
+  --scrollbar-width-legacy: 0.7em;
 }
 
 .scroller {
-    scrollbar-color: var(--scrollbar-color-track);
-    scrollbar-width: var(--scrollbar-width);
+  scrollbar-color: var(--scrollbar-color-track);
+  scrollbar-width: var(--scrollbar-width);
 }
 /* Modern browsers with `scrollbar-*` support */
 @supports (scrollbar-width: auto) {
   .scroller {
-      scrollbar-color: var(--scrollbar-color-thumb) var(--scrollbar-color-track);
-      scrollbar-width: var(--scrollbar-width);
+    scrollbar-color: var(--scrollbar-color-thumb) var(--scrollbar-color-track);
+    scrollbar-width: var(--scrollbar-width);
   }
 }
 
 /* Legacy browsers with `::-webkit-scrollbar-*` support */
 @supports selector(::-webkit-scrollbar) {
   .scroller::-webkit-scrollbar-thumb {
-      background: var(--scrollbar-color-thumb);
+    background: var(--scrollbar-color-thumb);
   }
   .scroller::-webkit-scrollbar-track {
-      background: var(--scrollbar-color-track);
+    background: var(--scrollbar-color-track);
   }
   .scroller::-webkit-scrollbar {
-      max-width: var(--scrollbar-width-legacy);
-      max-height: var(--scrollbar-width-legacy);
+    max-width: var(--scrollbar-width-legacy);
+    max-height: var(--scrollbar-width-legacy);
   }
 }

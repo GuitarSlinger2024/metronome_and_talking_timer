@@ -12,13 +12,16 @@ import ExerciseCtrl from './ExerciseCtrl'
 //  Images & data
 import mode_btn from '../_img/mode_btn.png'
 import listIcon from '../_img/list_white.png'
+import bkIcon from '../_img/bkBtn-white.png'
 
-function Main() {
+function Main()
+{
   const [mode, setMode] = useState('')
   const [ready, setReady] = useState(false)
   const [showRecords, setShowRecords] = useState(false)
 
-  useEffect(() => {
+  useEffect(() =>
+  {
     const isStorageNew = localStorage.getItem('isStorageNew')
     if (!isStorageNew) localStorage.clear()
     localStorage.setItem('isStorageNew', true)
@@ -26,7 +29,8 @@ function Main() {
     setMode(savedMode || 'light')
   }, [])
 
-  useEffect(() => {
+  useEffect(() =>
+  {
     if (mode) localStorage.setItem('pickHandMode', mode)
   }, [mode])
 
@@ -37,19 +41,38 @@ function Main() {
           src={mode_btn}
           alt="light/dark mode"
           id="lightModeBtn"
-          onClick={() => {
+          onClick={() =>
+          {
             setMode(mode === 'light' ? 'dark' : 'light')
           }}
         />
-        <img
-          src={listIcon}
-          alt="see all records"
-          id="listBtn"
-          onClick={() => {
-            setShowRecords(!showRecords)
-          }}
-        />
-        <Header  showRecords={showRecords}/>
+        {!showRecords ?
+
+          <img
+            src={listIcon}
+            alt="see all records"
+            id="listBtn"
+            onClick={() =>
+            {
+              setShowRecords(!showRecords)
+            }}
+          />
+          : <span
+            id="listBkBtn"
+            onClick={() =>
+            {
+              setShowRecords(!showRecords)
+            }}
+          >
+            <img
+              src={bkIcon}
+              alt="back to app"
+            />
+            Back
+          </span>
+
+        }
+        <Header showRecords={showRecords} />
         <div
           id="controls"
           className={`${showRecords ? 'hideThis' : ''}`}
