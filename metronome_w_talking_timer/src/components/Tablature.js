@@ -71,7 +71,7 @@ function Tablature({ notesOnStaff, xSpace, strokes })
       mt,
     })
 
-    focusLine.focusLine()
+    focusLine.update(0)
 
     // // ctx.clearRect(0, 0, 1000, 1000)
     // //  Draw notes and lines on the staff
