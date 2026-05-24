@@ -4,6 +4,10 @@ import { SettingsContext } from '../../context/SettingsContext'
 //  Classes
 import CreateStaff from './CreateStaff'
 import CreateNotes from './CreateNotes'
+<<<<<<< HEAD
+=======
+import { Circle } from '../../classes/circle.class'
+>>>>>>> 4db97159cc617f4fe6c813a285660c9ea4389a30
 import { TabContext } from '../../context/TabContext'
 
 function Tablature()
@@ -51,7 +55,11 @@ function Tablature()
   useEffect(() =>
   {
     console.log('%clesson changed', 'font-weight: 900;color:cyan', lesson)
+<<<<<<< HEAD
   }, [JSON.stringify(notesOnStaff), notesOnStaff, ctx,lesson])
+=======
+  }, [lesson])
+>>>>>>> 4db97159cc617f4fe6c813a285660c9ea4389a30
 
   //           useEffect:  New staff is set-up
   useEffect(() =>
