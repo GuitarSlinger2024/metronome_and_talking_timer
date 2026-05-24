@@ -28,7 +28,7 @@ function ExerciseCtrl({ startLesson, pauseLesson, setStartLesson, showRecords })
     setBeatInterval(
       setInterval(() => {
         const sound = newSound.cloneNode()
-        sound.volume = metronomeVolume / 100
+        sound.volume = metronomeVolume
         sound.play()
       }, interval)
     )
@@ -39,7 +39,7 @@ function ExerciseCtrl({ startLesson, pauseLesson, setStartLesson, showRecords })
       sounds[
         metronomeSound.replace(' (default)', '').replaceAll(' ', '_')
       ].cloneNode(true)
-    newSound.volume = metronomeVolume / 100
+    newSound.volume = metronomeVolume
 
     clearTimeout(beatInterval)
     setBeatInterval(null)

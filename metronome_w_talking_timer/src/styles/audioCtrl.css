@@ -46,10 +46,6 @@ div.checkbox {
   flex-shrink: 0;
 }
 
-#volumeControl {
-  height: 1em;
-  padding: 0 2em 1em;
-}
 
 #volumeControl {
   height: 2em;
@@ -61,55 +57,47 @@ div.checkbox {
 }
 
 #volumeControl p {
-  position: relative;
-  inset-block-start: 1em;
-}
-
-#volumeControl small {
-  display: flex;
-  justify-content: space-between;
-  inline-size: 100%;
-  margin-block-end: .4em;
+  margin-bottom: .5em;
 }
 
 #volume {
-  position: relative;
-  display: flex;
-  align-items: center;
-  inline-size: 100%;
-  block-size: .25em;
-  background-color: black;
-  flex-shrink: 0;
-  border-radius: .12em;
-  cursor: pointer;
-  --volume-level: 50%;
+  -webkit-appearance: none;
+  --size: .7em;
+  width: 100%;
+  height: .3em;
+  border-radius: .15em;
+  background: var(--text-color);
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  padding: 0 .5em;
 }
 
-.dark #volume {
-  background-color: white;
+#volume:hover {
+  opacity: 1;
 }
 
-#volume::before,
-#volume::after {
-  content: '';
-  position: absolute;
+#volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: var(--size);
+  height: var(--size);
   border-radius: 50%;
-  width: .9em;
-  height: .9em;
-  left: calc(var(--volume-level) - .25em);
-  pointer-events: none;
-  /* cursor: grab; */
+  border: .2em solid var(--text-color);
+  box-shadow: 0 0 .4em .3em var(--text-color);
+  background: var(--background-color);
+  cursor: pointer;
 }
 
-
-#volume::before {
-  background-color: white;
-  border: .21em solid black
-}
-
-.dark #volume::before {
-  background-color: black;
-  border: .21em solid white;
+#volume::-moz-range-thumb {
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  border: .2em solid var(--text-color);
+  box-shadow: 0 0 .4em .3em var(--text-color);
+  background: var(--background-color);
+  cursor: pointer;
 }
 
 #buttons {
