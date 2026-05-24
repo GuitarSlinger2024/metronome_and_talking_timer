@@ -3,16 +3,9 @@ import React, { useContext, useEffect, useState } from 'react'
 import { descriptions } from '../lessonData.js'
 import { SettingsContext } from '../context/SettingsContext.jsx'
 
-function LessonInfo({
-  section,
-  part,
-  lesson,
-  lessonInfo,
-  setLessonInfo,
-  bpm,
-  getExerciseRecords,
-}) {
-  const {correctTimeFormat} = useContext(SettingsContext)
+function LessonInfo({ lessonInfo, setLessonInfo, bpm, getExerciseRecords }) {
+  const { correctTimeFormat, section, part, lesson } =
+    useContext(SettingsContext)
   useEffect(() => {
     if (Boolean(!lesson)) {
       if (section === 'Picking Patterns' && part)
@@ -38,27 +31,6 @@ function LessonInfo({
       </span>
     )
   }
-
-  // const days = [
-  //   'Sunday',
-  //   'Monday',
-  //   'Tuesday',
-  //   'Wednesday',
-  //   'Thursday',
-  //   'Friday',
-  //   'Saturday'
-  // ]
-
-  // function correctTimeFormat(record) {
-  //   const date = new Date(record)
-  //   const dateArray = date.toString().split(' ')
-  //   const time = dateArray[4].split(':')
-  //   time.pop()
-  //   console.log(time)
-  //   const string = `${days[new Date().getDay()]}, ${dateArray[1]} ${dateArray[2]} at ${time.join(':')} ${new Date().getHours() >= 12 ? 'pm' : 'am'}`
-  //   console.log({ string })
-  //   return <span>{string}</span>
-  // }
 
   function getRecordEls() {
     return (

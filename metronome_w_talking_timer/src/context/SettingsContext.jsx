@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from 'react'
+import { lessons } from '../lessonData'
 
 import audio1 from '../_metronome_sounds/bassdrum.mp3'
 import audio2 from '../_metronome_sounds/bongo_1.mp3'
@@ -47,7 +48,9 @@ export function SettingsProvider({ children }) {
   const [metronomeSound, setMetronomeSound] = useState(
     settings.metronomeSound || 'wood metronome (default)'
   )
+ 
 
+  //  Store current settings
   useEffect(() => {
     const settingsObj = {
       section: section,

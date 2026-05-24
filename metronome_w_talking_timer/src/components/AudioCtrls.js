@@ -8,15 +8,18 @@ import playBtn from '../_img/play-btn.png'
 import Dropdown from './inputs/Dropdown'
 import Checkbox from './inputs/Checkbox'
 import VolumeCtrl from './inputs/VolumeCtrl'
+import { TabContext } from '../context/TabContext'
 
 function AudioCtrls({
   mode,
   ready,
-  setStartLesson,
-  startLesson,
-  pauseLesson,
-  setPauseLesson,
 }) {
+  const {
+    startLesson,
+    setStartLesson,
+    pauseLesson,
+    setPauseLesson
+  } = useContext(TabContext)
   const {
     showAudioMenu,
     setShowAudioMenu,

@@ -1,19 +1,42 @@
 import React, { useEffect, useContext, useState } from 'react'
 import { SettingsContext } from '../context/SettingsContext'
 
-import { nums, exercises, lessons } from '../lessonData'
-import Tabs from './Tablature'
+import { nums, exercises } from '../lessonData'
+import Tabs from './notesDisplay/Tablature'
 import ConvertTime from './ConvertTime'
+
+//  images
 import arrow from '../_img/arrow.png'
+import eighthNote from '../_img/music_notations/white/eighthNote.png'
+import eighthRest from '../_img/music_notations/white/eighthRest.png'
+import quarterNote from '../_img/music_notations/white/quarterNote.png'
+import quarterRest from '../_img/music_notations/white/quarterRest.png'
+import sixteenthNote from '../_img/music_notations/white/sixteenthNote.png'
+import dotEighthRest from '../_img/music_notations/white/dotEighthRest.png'
+import dotQuarterRest from '../_img/music_notations/white/dotQuarterRest.png'
 
 //  https://www.npmjs.com/package/use-timer
 import { useTimer } from 'use-timer'
+import { TabContext } from '../context/TabContext'
 
-function Exercises({ pauseLesson, lessonInfo, setStartLesson }) {
+function Exercises({ pauseLesson, lessonInfo })
+{
+  const {
+    setStartLesson,
+    exerciseObj,
+    setExerciseObj,
+    scrollInterval,
+    setScrollInterval,
+    setInterval_anime,
+    exerciseIndex,
+    setExerciseIndex,
+    lessonIndex,
+  } = useContext(TabContext)
   const { section, part, lesson, useLongDesc } = useContext(SettingsContext)
 
   const [finished, setFinished] = useState(new Set())
-  const xSpacing = 30
+  const [dotEqualsImg, setDotEqualsImg] = useState(quarterNote)
+  const [showNotesPerBeat, setShowNotesPerBeat] = useState(quarterNote)
 
   const {
     time: exTime,
@@ -24,7 +47,8 @@ function Exercises({ pauseLesson, lessonInfo, setStartLesson }) {
     autostart: true,
     initialTime: 0,
     endTime: lessonInfo.minutes * 60,
-    onTimeOver: () => {
+    onTimeOver: () =>
+    {
       finished.add(exerciseIndex)
       console.log(exerciseIndex)
       console.log(finished)
@@ -44,52 +68,64 @@ function Exercises({ pauseLesson, lessonInfo, setStartLesson }) {
     initialTime: 0,
   })
 
-  const [lessonIndex] = useState(getLessonIndex())
-  const [exerciseObj, setExerciseObj] = useState(null)
-  const [exerciseIndex, setExerciseIndex] = useState(null)
-
-  useEffect(() => {
+  useEffect(() =>
+  {
+    // exerciseObj includes all the lesson for the current section
     setExerciseObj(exercises[section][part] || exercises[section])
+    console.log(exercises[section][part] || exercises[section])
     setExerciseIndex(0)
-  }, [])
+  }, [section, part])
 
-  useEffect(() => {
-    if (pauseLesson) {
+  useEffect(() =>
+  {
+    if (pauseLesson)
+    {
       exPause()
       lsnPause()
-    } else {
+    } else
+    {
       exStart()
       lsnStart()
     }
   }, [pauseLesson])
 
-  function getLessonIndex() {
-    const lessonsObj = part
-      ? lessons['Picking Patterns'][part]
-      : lessons['Sweep Picking']
-    return lessonsObj.findIndex(lssn => lssn === lesson)
-  }
-
-  useEffect(() => {
+  useEffect(() =>
+  {
     //  Add vocals
     speechSynthesis.cancel()
-    if (exerciseObj) {
-      let text = exerciseObj.lessons[lessonIndex].exercises[exerciseIndex][0]
+    // exerciseObj includes all the lesson for the current section
+    if (exerciseObj)
+    {
+      console.log({ exerciseObj })
+      const exercise = exerciseObj.lessons[lessonIndex].exercises[exerciseIndex]
+      console.log(exercise)
+      let text = exercise[0]
       text = text
-        .replace('1 - e - & - a - 2', '1 e & a 2')
-        .replace('3 - e - & - a - 4', '3 e & a 4')
+        .replaceAll('1 - e - & - a - 2', '1 e & a 2')
+        .replaceAll('3 - e - & - a - 4', '3 e & a 4')
+        .replaceAll('e - & - a', 'e & a')
       let utterance = new SpeechSynthesisUtterance(
         useLongDesc ? text : text.split(' - ')[0]
       )
       speechSynthesis.speak(utterance)
-    }
-  }, [exerciseIndex])
+      //  Delete white spaces in notes and directions strings
+      exercise[1] = exercise[1].replaceAll(' ', '')
+      exercise[2] = exercise[2].replaceAll(' ', '')
 
-  function changeExercise(direction) {
+      //  dotEquals
+      const image = exercise[5] === '1' ? quarterNote : exercise[5] === '2' || exercise[5] === '3' ? eighthNote : sixteenthNote
+      setDotEqualsImg(image)
+      setShowNotesPerBeat(exercise[5])
+    }
+  }, [exerciseIndex, lesson])
+
+  function changeExercise(direction)
+  {
     exReset()
     if (!pauseLesson) exStart()
     const addDirection = exerciseIndex + direction
-    if (addDirection >= lessonInfo.numOfExercises) {
+    if (addDirection >= lessonInfo.numOfExercises)
+    {
       lessonOver()
       setStartLesson(false)
       return
@@ -98,20 +134,24 @@ function Exercises({ pauseLesson, lessonInfo, setStartLesson }) {
       addDirection >= lessonInfo.numOfExercises
         ? lessonInfo.numOfExercises - 1
         : addDirection < 1
-        ? 0
-        : addDirection
+          ? 0
+          : addDirection
     setExerciseIndex(nextEx)
   }
 
-  function lessonOver() {
+  function lessonOver()
+  {
     speechSynthesis.cancel()
+    clearInterval(scrollInterval)
+    setScrollInterval(null)
+    clearInterval(setInterval_anime)
     let text
-    if (lessonInfo.numOfExercises === finished.size) {
+    if (lessonInfo.numOfExercises === finished.size)
+    {
       text = 'This concludes '
       text += useLongDesc
-        ? `${part ? part : section}, lesson ${
-            exerciseObj && exerciseObj.lessons[lessonIndex].lesson
-          }, ${lessonInfo && lessonInfo.title.replace(' /', '')}.`
+        ? `${part ? part : section}, lesson ${exerciseObj && exerciseObj.lessons[lessonIndex].lesson
+        }, ${lessonInfo && lessonInfo.title.replace(' /', '')}.`
         : `this lesson`
 
       let logData = localStorage.getItem('exerciseLogs')
@@ -125,16 +165,18 @@ function Exercises({ pauseLesson, lessonInfo, setStartLesson }) {
       logData[section][part][lesson].push(date)
       localStorage.setItem('exerciseLogs', JSON.stringify(logData))
       console.log(logData)
-    } else {
+    } else
+    {
       const unFinished = []
-      for (let x = 0; x < lessonInfo.numOfExercises; x++) {
+      for (let x = 0; x < lessonInfo.numOfExercises; x++)
+      {
         if (!finished.has(x)) unFinished.push(nums[x + 1])
       }
       text = `This practice session will not be logged. `
-      if (useLongDesc) {
-        text += `You failed to complete exercise${
-          unFinished.length > 1 ? 's' : ''
-        } `
+      if (useLongDesc)
+      {
+        text += `You failed to complete exercise${unFinished.length > 1 ? 's' : ''
+          } `
         const lastItem =
           unFinished.length > 1 ? ` and ${unFinished.pop()}.` : '.'
         text += unFinished.join(' ') + lastItem
@@ -146,6 +188,24 @@ function Exercises({ pauseLesson, lessonInfo, setStartLesson }) {
 
   return (
     <div id="main-display">
+      <div className="noteValue">
+        {/* Show the notes per beat */}
+        <div className="showNotesPerBeat">
+          <span className="numOfNotes">{showNotesPerBeat}</span>
+          <p>note{showNotesPerBeat > 1 ? 's' : ''} per beat</p>
+        </div>
+        {/* Show the musical note */}
+        <div id="noteLegend">
+          <div className="smallCircle"></div>=
+          <div className="invertFromBlack dotEquals">
+            <img
+              src={dotEqualsImg}
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+
       <div id="description">
         <h3>
           {!part && section}
@@ -166,14 +226,7 @@ function Exercises({ pauseLesson, lessonInfo, setStartLesson }) {
         </div>
       </div>
       <div className="exercise practice">
-        <Tabs
-          xSpace={xSpacing}
-          notesOnStaff={
-            exerciseObj &&
-            exerciseObj.lessons[lessonIndex].exercises[exerciseIndex]
-          }
-          strokes={''}
-        />
+        <Tabs />
         <div className="info">
           <div
             className="time"
@@ -203,7 +256,8 @@ function Exercises({ pauseLesson, lessonInfo, setStartLesson }) {
             <img
               src={arrow}
               alt=""
-              onClick={() => {
+              onClick={() =>
+              {
                 changeExercise(-1)
               }}
             />
@@ -213,7 +267,8 @@ function Exercises({ pauseLesson, lessonInfo, setStartLesson }) {
             <img
               src={arrow}
               alt=""
-              onClick={() => {
+              onClick={() =>
+              {
                 changeExercise(1)
               }}
             />

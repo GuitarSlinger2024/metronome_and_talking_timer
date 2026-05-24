@@ -2,8 +2,10 @@ import React, { useContext, useEffect } from 'react'
 import { SettingsContext } from '../context/SettingsContext'
 import Dropdown from './inputs/Dropdown'
 import { lessons } from '../lessonData'
+import { TabContext } from '../context/TabContext'
 
-function LessonCtrls({ setReady, startLesson }) {
+function LessonCtrls({ setReady }) {
+  const {startLesson, setInterval_anime, scrollInterval, setScrollInterval} = useContext(TabContext)
   const {
     section,
     setSection,
@@ -40,6 +42,10 @@ function LessonCtrls({ setReady, startLesson }) {
       setShowLessonMenu(false)
       setShowPartMenu(false)
       setShowSectionMenu(false)
+    } else {
+      clearInterval(scrollInterval)
+      setScrollInterval(null)
+      clearInterval(setInterval_anime)
     }
   }, [startLesson])
 

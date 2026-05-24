@@ -1,11 +1,13 @@
 import { SettingsProvider } from './context/SettingsContext'
-import Main from "./components/Main"
+import { TabSettings } from './context/TabContext'
+import Main from './components/Main'
 
 function App() {
-
   return (
     <SettingsProvider>
-      <Main />
+      <TabSettings>
+        <Main />
+      </TabSettings>
     </SettingsProvider>
   )
 }
