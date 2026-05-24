@@ -49,7 +49,7 @@ function Main() {
             setShowRecords(!showRecords)
           }}
         />
-        <Header />
+        <Header  showRecords={showRecords}/>
         <div
           id="controls"
           className={`${showRecords ? 'hideThis' : ''}`}
