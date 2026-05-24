@@ -823,7 +823,7 @@ export const exercises = {
             ],
             [
               "Pattern 1 (part two) - Skip the 3rd beat and continue with an upstroke on the next '&'.",
-              '6546e456 5435e345 4324e234 3213e123 4324e234 5435e345',
+              '6546q456 5435q345 4324q234 3213q123 4324q234 5435q345',
               'dudu-udu',
               '8', // notes per measure
               '8/4', // time signature
@@ -839,7 +839,7 @@ export const exercises = {
             ],
             [
               "Pattern 2 (part two) - Skip the '&' of the 2nd beat and continue with a downstroke on the 3rd beat.",
-              '654e4356 543e3245 432e2134 543e3245',
+              '654q4356 543q3245 432q2134 543q3245',
               'dud-dudu',
               '8', // notes per measure
               '8/4', // time signature
@@ -855,7 +855,7 @@ export const exercises = {
             ],
             [
               "Pattern 3 (part two) - Skip the 4th beat and continue with an upstroke on the next '&'.",
-              '654634e4 543523e2 432412e1 543523e2',
+              '654634q4 543523q2 432412q1 543523q2',
               'dududu-u',
               '8', // notes per measure
               '8/4', // time signature
@@ -871,7 +871,7 @@ export const exercises = {
             ],
             [
               "Pattern 4 (part two) - Skip the '&' of the 3rd beat and continue with a downstroke on the 4th beat.",
-              '63543e45 52432e34 41321e23 52432e34',
+              '63543q45 52432q34 41321q23 52432q34',
               'dudud-du',
               '8', // notes per measure
               '8/4', // time signature
@@ -887,7 +887,7 @@ export const exercises = {
             ],
             [
               "Pattern 5 (part two) - Skip the 2nd beat and continue with an upstroke on the next '&'.",
-              '66e45345 55e34234 44e23123 55e34234',
+              '66q45345 55q34234 44q23123 55q34234',
               'du-ududu',
               '8', // notes per measure
               '8/4', // time signature
@@ -1515,7 +1515,7 @@ export const exercises = {
             ],
             [
               "Pattern 1 (part two) - Skip the 3rd beat and continue with an upstroke on the next '&'.",
-              '6546-456 5435-345 4324-234 3213-123 4324-234 5435-345',
+              '6546q456 5435q345 4324q234 3213q123 4324q234 5435q345',
               'd-ud-u-d --ud-u-d --ud-u-d --ud-u-- d-ud-u-- d-ud-u--',
               '8', // notes per measure
               '8/4', // time signature
@@ -1531,7 +1531,7 @@ export const exercises = {
             ],
             [
               "Pattern 2 (part two) - Skip the '&' of the 2nd beat and continue with a downstroke on the 3rd beat.",
-              '654-4356 543-3245 432-2134 543-3245',
+              '654q4356 543q3245 432q2134 543q3245',
               'd---du-d ----du-d ----du-- d---du--',
               '8', // notes per measure
               '8/4', // time signature
@@ -1547,7 +1547,7 @@ export const exercises = {
             ],
             [
               "Pattern 3 (part two) - Skip the 4th beat and continue with an upstroke on the next '&'.",
-              '654634-3 543523-2 432412-1 543523-2',
+              '654634q3 543523q2 432412q1 543523q2',
               'd-udu--u d-udu--u d-udu--u d-udu--u',
               '8', // notes per measure
               '8/4', // time signature
@@ -1563,7 +1563,7 @@ export const exercises = {
             ],
             [
               "Pattern 4 (part two) - Skip the '&' of the 3rd beat and continue with an upstroke on the 4th beat.",
-              '63543-45 52432-34 41321-23 52432-34',
+              '63543q45 52432q34 41321q23 52432q34',
               'dud-u--- dud-u--- dud-u--- dud-u---',
               '8', // notes per measure
               '8/4', // time signature
@@ -1579,7 +1579,7 @@ export const exercises = {
             ],
             [
               "Pattern 5 (part two) - Skip the 2nd beat and continue with an upstroke on the next '&'.",
-              '66-45345 55-34234 44-23123 55-34234',
+              '66q45345 55q34234 44q23123 55q34234',
               '-d-udu-d ud-udu-d ud-udu-- -d-udu--',
               '8', // notes per measure
               '8/4', // time signature

@@ -161,6 +161,7 @@ export function TabSettings({ children }) {
     clearInterval(setInterval_anime)
     clearInterval(scrollInterval)
     setScrollInterval(setInterval_anime)
+    setMoveTabs(false)
   }
 
   useEffect(() => {
