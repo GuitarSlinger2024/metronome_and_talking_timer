@@ -1,14 +1,19 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { SettingsContext } from '../../context/SettingsContext'
 import '../../styles/audioCtrl.css'
 
 function VolumeCtrl() {
-  const { setMetronomeVolume } = useContext(SettingsContext)
+  const { metronomeVolume, setMetronomeVolume } = useContext(SettingsContext)
+  const [value, setValue] = useState(metronomeVolume)
 
   function setVolume(e) {
     const percent = e.target.value
     setMetronomeVolume(percent)
   }
+  
+  useEffect(() => {
+    setValue(metronomeVolume)
+  }, [metronomeVolume])
 
   return (
     <div id="volumeControl">
@@ -21,7 +26,9 @@ function VolumeCtrl() {
         type='range'
         id="volume"
         min={0}
-        max={100}
+        max={50}
+        value={value}
+        onChange={(e) => {setValue(e.target.value)}}
         onMouseUp={(e) => {setVolume(e)}}
         onTouchEnd={(e) => {setVolume(e)}}
       ></input>
