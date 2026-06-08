@@ -58,17 +58,29 @@ export function TabSettings({ children }) {
       sounds[
         metronomeSound.replace(' (default)', '').replaceAll(' ', '_')
       ].cloneNode(true)
+      console.log({metronomeVolume})
     newSound.volume = metronomeVolume / 100
 
     clearTimeout(beatInterval)
     setBeatInterval(null)
-    if (startLesson) runMetronome(newSound, [...noteObjs], ctx, notesOnStaff)
+    if (startLesson) runMetronome(newSound, 10)
+  }, [ metronomeVolume, metronomeSound ])
+
+  useEffect(() => {
+    if (!noteObjs || !ctx) return
+    const newSound =
+      sounds[
+        metronomeSound.replace(' (default)', '').replaceAll(' ', '_')
+      ].cloneNode(true)
+      console.log({metronomeVolume})
+    newSound.volume = metronomeVolume / 100
+
+    clearTimeout(beatInterval)
+    setBeatInterval(null)
+    if (startLesson) runMetronome(newSound, 0)
   }, [
     startLesson,
-    metronomeVolume,
-    metronomeSound,
     noteObjs,
-    // ctx,
     notesOnStaff,
   ])
 
@@ -139,7 +151,7 @@ export function TabSettings({ children }) {
   //                    Functions
 
   //  Controls the timing for sound and animation
-  function runMetronome(newSound) {
+  function runMetronome(newSound, countParam) {
     const interval =
       section === 'Sweep Picking' &&
       (lesson === 'Changing Directions' || lesson === 'Building Speed')
@@ -148,13 +160,14 @@ export function TabSettings({ children }) {
 
     clearInterval(beatInterval)
     setBeatInterval(() => {
-      let count = 0
+      let count = countParam
+      if (countParam === 10) setMoveTabs(true)
       return setInterval(() => {
         count++
+        if (count > 4 / +notesOnStaff[5] - 1) setMoveTabs(true)
         const sound = newSound.cloneNode()
         sound.volume = metronomeVolume / 100
         sound.play()
-        if (count > 4 / +notesOnStaff[5] - 1) setMoveTabs(true)
       }, interval)
     })
 

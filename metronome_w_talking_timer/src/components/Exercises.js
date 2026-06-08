@@ -34,7 +34,7 @@ function Exercises({ pauseLesson, lessonInfo })
   } = useContext(TabContext)
   const { section, part, lesson, useLongDesc } = useContext(SettingsContext)
 
-  const [finished, setFinished] = useState(new Set())
+  const [finished] = useState(new Set())
   const [dotEqualsImg, setDotEqualsImg] = useState(quarterNote)
   const [showNotesPerBeat, setShowNotesPerBeat] = useState(quarterNote)
 

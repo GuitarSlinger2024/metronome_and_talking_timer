@@ -5,7 +5,6 @@ import { SettingsContext } from '../context/SettingsContext'
 import Welcome from './Welcome'
 import LessonInfo from './LessonInfo'
 import Exercises from './Exercises'
-import { useEffect } from 'react'
 
 //  Canvas functions
 import { TabContext } from '../context/TabContext'
