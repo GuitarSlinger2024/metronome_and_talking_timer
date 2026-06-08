@@ -24,6 +24,8 @@ function Dropdown({
     let target = e.target.nodeName === 'IMG' ? e.target.parentElement : e.target
     if (target.classList.contains('playBtn'))
     {
+      e.stopPropagation()
+      e.preventDefault()
       const testSound =
         sounds[
           target.parentElement.textContent
@@ -62,18 +64,16 @@ function Dropdown({
     if (!showList)
     {
       setShowList(true)
-      console.log('setting onclick')
       setTimeout(() => {
-      document.querySelector('#root').onclick = () =>
+      document.querySelector('#root').onclick = (e) =>
       {
-        console.log('document clicked')
+        let target = e.target.nodeName === 'IMG' ? e.target.parentElement : e.target
+        if (target.classList.contains('playBtn')) return
         document.querySelector('#root').onclick = null
         setShowList(false)
       }        
       }, 0);
-
-    } else
-      setShowList(false)
+    }
   }
 
   return (
