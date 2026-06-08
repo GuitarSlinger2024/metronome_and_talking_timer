@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { SettingsContext } from '../../context/SettingsContext'
 
-function GetRecordsByExercise({ section, part, title, logData }) {
+function GetRecordsByExercise({ section, part, title, logData })
+{
   const logStructure = {
     'Sweep Picking': [
       'Sweeping Primer',
@@ -12,7 +13,7 @@ function GetRecordsByExercise({ section, part, title, logData }) {
     'Alternate Picking': [
       'Single & Adjacent Strings',
       'String Skipping',
-      'Skip 2 strings',
+      'Skip 2 Strings',
       'Skip 3 strings',
       'Skip 4 strings',
       'Random Patterns',
@@ -33,7 +34,8 @@ function GetRecordsByExercise({ section, part, title, logData }) {
 
   const { correctTimeFormat } = useContext(SettingsContext)
 
-  function NewList({ section, part, ex }) {
+  function NewList({ section, part, ex })
+  {
     return (
       <>
         <h4 className="exerciseTitle">{ex}</h4>
@@ -49,9 +51,12 @@ function GetRecordsByExercise({ section, part, title, logData }) {
     )
   }
 
+  // .replace( '2','two').replace( '3','three').replace( '4','four')
+  // .replace('two', '2').replace('three', '3').replace('four', '4')
   const listOfEx = []
   if (!logData[section] || !logData[section][part]) return
-  logStructure[title].forEach(ex => {
+  logStructure[title].forEach(ex =>
+  {
     if (logData[section][part][ex]) listOfEx.push(ex)
   })
 
@@ -63,7 +68,8 @@ function GetRecordsByExercise({ section, part, title, logData }) {
         <NewList
           section={section}
           part={part}
-          ex={ex}
+          ex={ex.replace('two', '2').replace('three', '3').replace('four', '4')}
+        // ex={ex}
         />
       ))}
       <ul></ul>

@@ -23,11 +23,13 @@ function GetRecordsByDate({ logData }) {
               exercise,
               partName,
               time: correctTimeFormat(date),
+              date
             })
           })
         })
       })
     })
+    console.log(list)
     setListByDate(list)
   }, [logData])
 
@@ -35,9 +37,10 @@ function GetRecordsByDate({ logData }) {
     <ul>
       {Object.keys(listByDate).length ?
         Object.keys(listByDate)
-          .sort()
-          .reverse()
+          .sort((a, b) => listByDate[a][0].date < listByDate[b][0].date ? 1 : -1)
+          // .reverse()
           .map((date, d) => {
+            // console.log({date, d})
             return (
               <>
                 <h3 className="day">{`${
@@ -47,7 +50,7 @@ function GetRecordsByDate({ logData }) {
                   key={d}
                   className="data"
                 >
-                  {listByDate[date].map((exercise, e) => {
+                  {listByDate[date].reverse().map((exercise, e) => {
                     return (
                       <li key={e}>
                         {`${exercise.time.split(' at ')[1]} - 

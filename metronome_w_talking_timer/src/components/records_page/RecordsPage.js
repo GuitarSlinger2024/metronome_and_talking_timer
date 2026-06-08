@@ -18,7 +18,7 @@ function RecordsPage() {
     <main>
       <h2 className="records-page-title">Records Page</h2>
       <div className="list list2 scroller">
-        <h2 className="listTitle">Listed Chronologically</h2>
+        <h2 className="listTitle">Most Recent First</h2>
         <GetRecordsByDate logData={logData} />
       </div>
       <div className="list scroller">

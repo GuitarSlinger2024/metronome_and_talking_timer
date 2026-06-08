@@ -121,7 +121,7 @@ main {
   justify-content: space-between;
   margin: auto;
   --section-title: #0a7ea5;
-  --exercise-title: #009000;
+  --title-one-green: #009000;
   --by-day: rgb(208, 176, 0);
   --track-color: rgb(189, 189, 189);
   --thumb-color: var(var(--section-title));
@@ -129,7 +129,7 @@ main {
 
 .dark main {
   --section-title: #b6edff;
-  --exercise-title: lightgreen;
+  --title-one-green: lightgreen;
   --by-day: #ccac00;
   --track-color: #b6edff;
   --thumb-color: black;
@@ -154,11 +154,11 @@ main .listTitle {
   width: fit-content;
   overflow-y: auto;
   height: 40em;
+  padding-right: 2em;
 }
 
 .list:not(.list2) {
   flex-shrink: 0;
-  padding-right: 2em;
   min-width: 14em;
 }
 
@@ -185,7 +185,7 @@ main .listTitle {
 
 .exerciseTitle {
   text-decoration: underline;
-  color: var(--exercise-title);
+  color: var(--title-one-green);
   margin: 0.5em 0 0.25em;
   margin-left: 1em;
 }

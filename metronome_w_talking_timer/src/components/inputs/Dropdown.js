@@ -13,14 +13,17 @@ function Dropdown({
   showList,
   setShowList,
   type,
-}) {
+})
+{
   const { sounds, metronomeVolume } =
     useContext(SettingsContext)
 
-  function optionClicked(e) {
+  function optionClicked(e)
+  {
     //  Check if the play btn in the Sound dropdown was clicked
     let target = e.target.nodeName === 'IMG' ? e.target.parentElement : e.target
-    if (target.classList.contains('playBtn')) {
+    if (target.classList.contains('playBtn'))
+    {
       const testSound =
         sounds[
           target.parentElement.textContent
@@ -30,28 +33,53 @@ function Dropdown({
         ].cloneNode(true)
       testSound.volume = metronomeVolume / 100
       testSound.play()
-    } else {
+    } else
+    {
       if (type === 'sound')
-      setOption(target.textContent.replaceAll(' ', '_').toLowerCase())
+        setOption(target.textContent.replaceAll(' ', '_').toLowerCase())
       else
-      setOption(target.textContent)
+        setOption(target.textContent)
       setShowList(false)
     }
   }
 
-  function titleCase(text) {
+  function titleCase(text)
+  {
     const textObj = text.split(' ')
-    textObj.forEach((txt, i) => {
+    textObj.forEach((txt, i) =>
+    {
       textObj[i] = txt[0].toUpperCase() + txt.slice(1)
     })
     return textObj.join(' ')
   }
 
+  function clickEvent()
+  {
+    document
+      .querySelectorAll('.show')
+      .forEach(show => show.classList.remove('show'))
+    const show = !showList
+    if (!showList)
+    {
+      setShowList(true)
+      console.log('setting onclick')
+      setTimeout(() => {
+      document.querySelector('#root').onclick = () =>
+      {
+        console.log('document clicked')
+        document.querySelector('#root').onclick = null
+        setShowList(false)
+      }        
+      }, 0);
+
+    } else
+      setShowList(false)
+  }
+
   return (
     <div
-      className={`form-container ${disable ? 'disable' : ''}${
-        showList ? ' show' : ''
-      }`}
+      className={`form-container ${disable ? 'disable' : ''}${showList ? ' show' : ''
+        }`}
     >
       <div className="dropdown">
         <label>{label}</label>
@@ -59,12 +87,7 @@ function Dropdown({
         <div
           className="input"
           name="datalist"
-          onClick={() => {
-            document
-              .querySelectorAll('.show')
-              .forEach(show => show.classList.remove('show'))
-            setShowList(prev => !prev)
-          }}
+          onClick={clickEvent}
         >
           {(currentOpt && titleCase(currentOpt.replaceAll('_', ' '))) || <span className="placeHolder">{placeHolder}</span>}
         </div>
@@ -74,7 +97,8 @@ function Dropdown({
               options.map((opt, i) => (
                 <div
                   className="option"
-                  onClick={e => {
+                  onClick={e =>
+                  {
                     optionClicked(e)
                   }}
                   key={i}

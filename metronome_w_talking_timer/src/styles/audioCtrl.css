@@ -119,9 +119,8 @@ div.checkbox {
   width: 100%;
 }
 
-button {
-  outline: none;
-  border-width: .02em;
+button:disabled {
+  pointer-events: none;
 }
 
 button {
@@ -130,6 +129,8 @@ button {
   width: 6.5em;
   height: max-content;
   padding: .3em .4em;
+  outline: none;
+  border-width: .02em;
   border-radius: .5em;
   text-align: center;
   font-weight: 900;
