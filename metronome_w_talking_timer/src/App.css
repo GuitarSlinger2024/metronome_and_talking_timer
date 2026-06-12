@@ -120,19 +120,25 @@ main {
   font-size: 0.95em;
   justify-content: space-between;
   margin: auto;
-  --section-title: #0a7ea5;
   --title-one-green: #009000;
   --by-day: rgb(208, 176, 0);
-  --track-color: rgb(189, 189, 189);
-  --thumb-color: var(var(--section-title));
+  --section1-title: #0a7ea5;
+  --section2-title: var(--by-day);
+  --track1-color: rgb(189, 189, 189);
+  --thumb1-color: var(var(--section1-title));
+  --thumb2-color: var(var(--section1-title));
+  --track1-color: var(--by-day);
+  --track2-color: var(--section1-title);
 }
 
 .dark main {
-  --section-title: #b6edff;
+  --section1-title: #b6edff;
   --title-one-green: lightgreen;
   --by-day: #ccac00;
-  --track-color: #b6edff;
-  --thumb-color: black;
+  --track1-color: var(--by-day);
+  --track2-color: var(--section1-title);
+  --thumb1-color: black;
+  --thumb2-color: black;
 }
 
 .records-page-title {
@@ -153,7 +159,7 @@ main .listTitle {
 .list {
   width: fit-content;
   overflow-y: auto;
-  height: 40em;
+  height: 37em;
   padding-right: 2em;
 }
 
@@ -168,7 +174,7 @@ main .listTitle {
 
 .sectionTitle {
   text-decoration: underline;
-  color: var(--section-title);
+  color: var(--section1-title);
 }
 .sectionTitle:not(:first-of-type) {
   margin-top: 1em;
@@ -209,16 +215,23 @@ ul.data li {
 }
 
 .scroller {
-  --scrollbar-color-thumb: var(--thumb-color);
-  --scrollbar-color-track: var(--track-color);
+  scrollbar-width: var(--scrollbar-width);
   --scrollbar-width: thin;
   --scrollbar-width-legacy: 0.7em;
 }
 
-.scroller {
+.scroller1 {
+  --scrollbar-color-thumb: var(--thumb1-color);
+  --scrollbar-color-track: var(--track1-color);
   scrollbar-color: var(--scrollbar-color-track);
-  scrollbar-width: var(--scrollbar-width);
 }
+
+.scroller2 {
+  --scrollbar-color-thumb: var(--thumb2-color);
+  --scrollbar-color-track: var(--track2-color);
+  scrollbar-color: var(--scrollbar-color-track);
+}
+
 /* Modern browsers with `scrollbar-*` support */
 @supports (scrollbar-width: auto) {
   .scroller {

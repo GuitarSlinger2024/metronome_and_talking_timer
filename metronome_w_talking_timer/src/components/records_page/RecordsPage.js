@@ -3,10 +3,12 @@ import { SettingsContext } from '../../context/SettingsContext'
 import GetRecordsByExercise from './GetRecordsByExercise'
 import GetRecordsByDate from './GetRecordsByDate'
 
-function RecordsPage() {
+function RecordsPage()
+{
   const [logData, setLogData] = useState([])
 
-  useEffect(() => {
+  useEffect(() =>
+  {
     let storageData = localStorage.getItem('exerciseLogs')
       ? JSON.parse(localStorage.getItem('exerciseLogs'))
       : {}
@@ -17,13 +19,15 @@ function RecordsPage() {
   return (
     <main>
       <h2 className="records-page-title">Records Page</h2>
-      <div className="list list2 scroller">
+      <div className="">
         <h2 className="listTitle">Most Recent First</h2>
-        <GetRecordsByDate logData={logData} />
+        <div className="list list2 scroller scroller1">
+          <GetRecordsByDate logData={logData} />
+        </div>
       </div>
-      <div className="list scroller">
-        <>
-          <h2 className="listTitle">Listed by Exercises</h2>
+      <div className="">
+        <h2 className="listTitle">Listed by Exercises</h2>
+        <div className="list scroller scroller2">
           {Object.keys(logData).length > 0 ? (
             <>
               <GetRecordsByExercise
@@ -54,7 +58,7 @@ function RecordsPage() {
           ) : (
             <div>No records yet</div>
           )}
-        </>
+        </div>
       </div>
     </main>
   )
