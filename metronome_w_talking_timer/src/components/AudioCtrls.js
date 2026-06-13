@@ -13,12 +13,14 @@ import { TabContext } from '../context/TabContext'
 function AudioCtrls({
   mode,
   ready,
-}) {
+})
+{
   const {
     startLesson,
     setStartLesson,
     pauseLesson,
-    setPauseLesson
+    setPauseLesson,
+    setPauseTabs
   } = useContext(TabContext)
   const {
     showAudioMenu,
@@ -193,7 +195,8 @@ function AudioCtrls({
           <button
             id="start"
             disabled={!ready}
-            onClick={() => {
+            onClick={() =>
+            {
               setStartLesson(true)
               setPauseLesson(false)
             }}
@@ -206,8 +209,10 @@ function AudioCtrls({
         {startLesson && !pauseLesson && (
           <button
             id="pause"
-            onClick={() => {
+            onClick={() =>
+            {
               setPauseLesson(true)
+              setPauseTabs(true)
             }}
           >
             Pause
@@ -218,8 +223,10 @@ function AudioCtrls({
         {startLesson && pauseLesson && (
           <button
             id="continue"
-            onClick={() => {
+            onClick={() =>
+            {
               setPauseLesson(false)
+              setPauseTabs(false)
             }}
           >
             Continue
@@ -230,7 +237,8 @@ function AudioCtrls({
         <button
           id="quit"
           disabled={!startLesson}
-          onClick={() => {
+          onClick={() =>
+          {
             setStartLesson(false)
             setPauseLesson(false)
             speechSynthesis.cancel()

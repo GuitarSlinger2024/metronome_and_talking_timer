@@ -1076,7 +1076,7 @@ export const exercises = {
             [
               'Exercise 1 - Skip three strings with inside picking, start with the low string. Use sweeps when descending',
               '6626 5515',
-              'dudu -d-u',
+              '-d-u dudu',
               '4', // notes per measure
               '4/4', // time signature
               '1', // notes per beat
@@ -1084,7 +1084,7 @@ export const exercises = {
             [
               'Exercise 2 - Skip three strings with outside picking, start with the low string. Use sweeps when ascending',
               '6266 5155',
-              'd-ud --ud',
+              'udud --ud',
               '4', // notes per measure
               '4/4', // time signature
               '1', // notes per beat
@@ -1092,7 +1092,7 @@ export const exercises = {
             [
               'Exercise 3 - Skip three strings with inside picking, start with the high string. Use sweeps when descending',
               '2622 1511',
-              'dudu --du',
+              '--du dudu',
               '4', // notes per measure
               '4/4', // time signature
               '1', // notes per beat
@@ -1100,7 +1100,7 @@ export const exercises = {
             [
               'Exercise 4 - Skip three strings with outside picking, start with the high string. Use sweeps when ascending',
               '22621151',
-              'du-d-u-d',
+              'udud -u-d',
               '4', // notes per measure
               '4/4', // time signature
               '1', // notes per beat
@@ -1108,7 +1108,7 @@ export const exercises = {
             [
               'Exercise 5 - Sweep from the lower note to the higher note, then from the higher note to the lower note.',
               '62265115',
-              'd-u-d-u-',
+              '-du-d-u-',
               '4', // notes per measure
               '4/4', // time signature
               '1', // notes per beat
@@ -1131,26 +1131,26 @@ export const exercises = {
             ],
             [
               'Exercise 8 - Sweep from the 1st string to the 6th, then from the 6th to the 1st.',
-              '61166116',
-              'd-u-d-u-',
+              '6116',
+              'd-u-',
               '4', // notes per measure
               '4/4', // time signature
               '1', // notes per beat
             ],
             [
               'Exercise 9 - Skip four strings with inside picking, sweep from the 6th string to the 1st string',
-              '616616',
-              'd-ud-u',
-              '4', // notes per measure
-              '4/4', // time signature
+              '616',
+              'd-u',
+              '6', // notes per measure
+              '6/4', // time signature
               '1', // notes per beat
             ],
             [
               'Exercise 10 - Skip four strings with inside picking, sweep from the 1st string to the 6th string',
-              '11611611',
-              'du-du-du',
-              '4', // notes per measure
-              '4/4', // time signature
+              '116',
+              'du-',
+              '6', // notes per measure
+              '6/4', // time signature
               '1', // notes per beat
             ],
           ],
@@ -1160,8 +1160,8 @@ export const exercises = {
           exercises: [
             [
               'Pattern 1 - Play all 8 notes in each pattern. Count 1 - & - 2 - & - 3 - & - 4 - &.',
-              '65465456 54354345 43243234 32132123 43243234 54354345',
-              '-d-ud-u- d--ud-u- d--ud-u- d--ud-u- -d-ud-u- -d-ud-u-',
+              '65465456 54354345 43243234 32132123 43243234 54354345',  //  Weird stuff happens if both of these
+              '-d-ud-u- d--ud-u- d--ud-u- d--ud-u- -d-ud-u- -d-ud-u-',  //  two patterns aren't doubled like this.
               '8', // notes per measure
               '8/4', // time signature
               '1', // notes per beat

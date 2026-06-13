@@ -37,6 +37,7 @@ export function TabSettings({ children }) {
   const [focusLine, setFocusLine] = useState(null)
   const [focusLinePos, setFocusLinePos] = useState(0)
   const [moveTabs, setMoveTabs] = useState(false)
+  const [pauseTabs, setPauseTabs] = useState(false)
 
   useEffect(() => {
     if (!lesson) return
@@ -125,16 +126,14 @@ export function TabSettings({ children }) {
 
       return setInterval(() => {
         CreateStaff(notesOnStaff[4], ctx, 15)
-        if (notes.length && moveTabs) {
+        if (notes.length && moveTabs && !pauseTabs) {
           notes.forEach(note =>
             note.update(((xSpace / 30) * +notesOnStaff[5]) / 2)
           )
           focusLine.draw()
         } else {
           notes.forEach(note => note.draw())
-          focusLine.update((-(xSpace / 30) * +notesOnStaff[5]) / 2)
-          // console.log(focusLine.xPos > leftMargin + xSpace * 10)
-          // console.log(focusLine.xPos, leftMargin + xSpace * 10)
+          focusLine.update(pauseTabs ? 0 : (-(xSpace / 30) * +notesOnStaff[5]) / 2)
         }
       }, interval / 30 / 2)
     })
@@ -144,6 +143,7 @@ export function TabSettings({ children }) {
     JSON.stringify(exerciseObj),
     lessonIndex,
     moveTabs,
+    pauseTabs,
     startLesson,
     lesson,
   ])
@@ -181,6 +181,7 @@ export function TabSettings({ children }) {
     clearInterval(scrollInterval)
     setScrollInterval(setInterval_anime)
     setMoveTabs(false)
+    setPauseTabs(false)
   }, [exerciseIndex, lesson])
 
   return (
@@ -211,6 +212,7 @@ export function TabSettings({ children }) {
         setSetInterval_anime,
         setFocusLine,
         lesson,
+        setPauseTabs
       }}
     >
       {children}
