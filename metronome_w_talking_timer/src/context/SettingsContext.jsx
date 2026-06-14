@@ -43,7 +43,7 @@ export function SettingsProvider({ children }) {
     settings.hidePickDirections || false
   )
   const [metronomeVolume, setMetronomeVolume] = useState(
-    settings.metronomeVolume || 50
+    settings.metronomeVolume || .3
   )
   const [metronomeSound, setMetronomeSound] = useState(
     settings.metronomeSound || 'wood metronome (default)'
