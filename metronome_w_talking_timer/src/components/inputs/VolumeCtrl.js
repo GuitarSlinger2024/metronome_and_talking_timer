@@ -26,7 +26,7 @@ function VolumeCtrl() {
         type='range'
         id="volume"
         min={0}
-        max={50}
+        max={100}
         value={value}
         onChange={(e) => {setValue(e.target.value)}}
         onMouseUp={(e) => {setVolume(e)}}
