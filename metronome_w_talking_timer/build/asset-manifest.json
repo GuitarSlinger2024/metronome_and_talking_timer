@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/static/css/main.b139e62f.css",
+    "main.js": "/static/js/main.0a97c9a6.js",
+    "static/media/bkBtn-white.png": "/static/media/bkBtn-white.2ad1185a2b1da93fc30e.png",
+    "static/media/white.png": "/static/media/white.606c4d7aee632f9bfde9.png",
+    "static/media/bongo_5.mp3": "/static/media/bongo_5.f7f893b9b52300747275.mp3",
+    "static/media/play-btn.png": "/static/media/play-btn.4e37985c48e0e1c3758b.png",
+    "static/media/bongo_3.mp3": "/static/media/bongo_3.3f0dbb2d94d8b2c97ddb.mp3",
+    "static/media/snaredrum_2.mp3": "/static/media/snaredrum_2.6943e6e8db2bbb2aaa24.mp3",
+    "static/media/bongo_4.mp3": "/static/media/bongo_4.6e860b7f33486385596a.mp3",
+    "static/media/bongo_6.mp3": "/static/media/bongo_6.c6c59f80ca896e0d916b.mp3",
+    "static/media/bongo_2.mp3": "/static/media/bongo_2.e54c5bb2cd35233858f5.mp3",
+    "static/media/black.png": "/static/media/black.7291730246d5f5d14d2d.png",
+    "static/media/smack.mp3": "/static/media/smack.35ba3d7bdcdf43a3fd66.mp3",
+    "static/media/bongo_1.mp3": "/static/media/bongo_1.2dbff9f75047c0f5f241.mp3",
+    "static/media/snaredrum_1.mp3": "/static/media/snaredrum_1.420e24bfbf13b49c51cf.mp3",
+    "static/media/sixteenthNote.png": "/static/media/sixteenthNote.c12a0b66de39434aba54.png",
+    "static/media/list_white.png": "/static/media/list_white.7f4f9da26f9d7740d3e2.png",
+    "static/media/bassdrum.mp3": "/static/media/bassdrum.0bbb7d002712fe9bcae2.mp3",
+    "static/media/snaredrum_3.mp3": "/static/media/snaredrum_3.7f2852d925a80b00a08e.mp3",
+    "static/media/wood_block.mp3": "/static/media/wood_block.9a4c86f006ce0cf84809.mp3",
+    "static/media/mode_btn.png": "/static/media/mode_btn.ee9794e85de5f3e42938.png",
+    "static/media/wood_metronome.mp3": "/static/media/wood_metronome.f45487412451b816759b.mp3",
+    "index.html": "/index.html",
+    "main.b139e62f.css.map": "/static/css/main.b139e62f.css.map",
+    "main.0a97c9a6.js.map": "/static/js/main.0a97c9a6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b139e62f.css",
+    "static/js/main.0a97c9a6.js"
+  ]
+}
