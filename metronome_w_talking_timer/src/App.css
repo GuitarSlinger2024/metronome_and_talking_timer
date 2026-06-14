@@ -1,7 +1,7 @@
 .App {
   position: relative;
   height: 44em;
-  width: 40em;
+  width: 38em;
   margin: 3em auto;
   --text-color: #2e3440;
   --background-color: white;
@@ -60,8 +60,12 @@
   filter: brightness(100%);
 }
 
+.invertFromBlack {
+  filter: invert(100%);
+}
+
 .dark .invertFromBlack {
-  filter: grayscale(100%);
+  filter: invert(0);
 }
 
 section {
