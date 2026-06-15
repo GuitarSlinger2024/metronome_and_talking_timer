@@ -28,7 +28,7 @@ export function SettingsProvider({ children }) {
   const [lesson, setLesson] = useState(settings.lesson || null)
 
   useEffect(() => {
-    setSection(settings.section || null)
+    setSection(settings.section || 'Intro')
     setPart(settings.part || null)
     setLesson(settings.lesson || null)
   }, [])
