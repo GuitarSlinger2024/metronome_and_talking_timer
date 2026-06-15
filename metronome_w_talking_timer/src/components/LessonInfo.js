@@ -74,9 +74,6 @@ function LessonInfo({ lessonInfo, setLessonInfo, bpm, getExerciseRecords })
         lessonInfo.description &&
         lessonInfo.description.map((desc, i) =>
         {
-          console.log(i)
-          console.log(desc)
-          console.log(lessonInfo.description)
           return (<p key={i}>{desc}</p>)
         })}
       <div className="lessonDetailsContainer">
