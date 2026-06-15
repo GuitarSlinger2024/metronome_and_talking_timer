@@ -3,25 +3,48 @@ import React, { useContext, useEffect, useState } from 'react'
 import { descriptions } from '../lessonData.js'
 import { SettingsContext } from '../context/SettingsContext.jsx'
 
-function LessonInfo({ lessonInfo, setLessonInfo, bpm, getExerciseRecords }) {
-  const { correctTimeFormat, section, part, lesson } =
+function LessonInfo({ lessonInfo, setLessonInfo, bpm, getExerciseRecords })
+{
+  const { correctTimeFormat, section, part, lesson, setPart, setLesson } =
     useContext(SettingsContext)
-  useEffect(() => {
-    if (Boolean(!lesson)) {
+  useEffect(() =>
+  {
+    if (section === 'Intro')
+    {
+      setPart(null)
+      setLesson(null)
+    }
+    if (!descriptions || !section || section === 'Intro') return
+    if (Boolean(!lesson))
+    {
       if (section === 'Picking Patterns' && part)
-        setLessonInfo(descriptions[section][part])
-      else setLessonInfo(descriptions[section])
-    } else if (Boolean(lesson)) {
+      {
+        const descript = descriptions[section][part]
+        console.log({ ...descript })
+        if (typeof descript.description[0] === 'object')
+          descript.description = descript.description[0]
+        setLessonInfo(descript)
+      }
+      else
+      {
+        console.log(descriptions[section])
+        setLessonInfo(descriptions[section])
+      }
+    } else if (Boolean(lesson))
+    {
       // if (section === 'Picking Patterns') {
-      if (descriptions[section][part]) {
+      if (descriptions[section][part])
+      {
         setLessonInfo(descriptions[section][part].lessons[lesson])
-      } else if (section === 'Sweep Picking' && !part) {
+      } else if (section === 'Sweep Picking' && !part)
+      {
         setLessonInfo(descriptions[section].lessons[lesson])
       }
     }
   }, [section, part, lesson])
 
-  function makeIntoAmPm(time) {
+  function makeIntoAmPm(time)
+  {
     let hour = +time.split(' ')[3].split(':')[0]
     if (hour === 0) hour = 24
     return (
@@ -32,13 +55,15 @@ function LessonInfo({ lessonInfo, setLessonInfo, bpm, getExerciseRecords }) {
     )
   }
 
-  function getRecordEls() {
+  function getRecordEls()
+  {
     return (
       getExerciseRecords().length > 0 &&
       [...getExerciseRecords()]
         .reverse()
         // .splice(0, 3)
-        .map((record, i) => {
+        .map((record, i) =>
+        {
           console.log(record)
           return <li key={i}>{correctTimeFormat(record)}</li>
         })
@@ -52,7 +77,13 @@ function LessonInfo({ lessonInfo, setLessonInfo, bpm, getExerciseRecords }) {
       </h2>
       {lessonInfo &&
         lessonInfo.description &&
-        lessonInfo.description.map((desc, i) => <p key={i}>{desc}</p>)}
+        lessonInfo.description.map((desc, i) =>
+        {
+          console.log(i)
+          console.log(desc)
+          console.log(lessonInfo.description)
+          return (<p key={i}>{desc}</p>)
+        })}
       <div className="lessonDetailsContainer">
         {lessonInfo && lessonInfo.numOfExercises && (
           <>

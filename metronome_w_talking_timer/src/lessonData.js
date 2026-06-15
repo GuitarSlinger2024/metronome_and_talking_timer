@@ -1596,7 +1596,7 @@ export const descriptions = {
   'Sweep Picking': {
     title: 'Section 1: Sweep Picking',
     description: [
-      'Fast sweeps depend more on timing and finesse than physical force. Using just the tip of the pick helps to develop speed by keeping the string resistance down. Let your arm do most of the work. Moving the whole arm to play each string is also good practice whether sweeping or just picking individual notes.',
+      'Using just the tip of the pick helps to develop speed by keeping the string resistance down. Let your arm do most of the work. Moving the whole arm to play each string is also good practice when picking individual notes.',
       'All four lessons practice with 1, 2 and 4 notes per beat, and the last two lessons push the metronome up to 80 bpm; just enough to be challenging. After this there is very little push towards speed.',
       'Slow means smooth, smooth means fast.',
     ],
@@ -1644,13 +1644,14 @@ export const descriptions = {
   'Picking Patterns': {
     title: 'Section 2: Picking Patterns',
     description: [
-      "Three different approaches are taken here: alternate picking, economy picking and cross picking. In this study a 'sweep' is used any time two or more notes are picked in the same direction.",
-      'These lessons are about gaining speed AND accuracy with things like string skipping by going VERY SLOWLY and really paying attention. Remember, slow means smooth... smooth means fast! Some definitions may vary from one source to another. The definitions given here are not necessarily definitive.',
+      "Three different approaches are taken here: alternate picking, economy picking and cross picking. In this study a 'sweep' is any time two or more notes are picked in the same direction.",
+      'These lessons are about gaining speed AND accuracy with things like string skipping by going VERY SLOWLY and really paying attention. Remember...',
+      'Slow means smooth... smooth means fast!'
     ],
     'Alternate Picking': {
       title: 'Part 1: Alternate Picking',
       description: [
-        "Alternate picking is simple: keep moving in a continuous down/up motion. This makes the pick direction easy to work out; beats are picked with a downstroke, the &'s are picked with an up-stroke. It does not matter which string is picked next, the pick direction is always moving in a steady pendulum like motion. ",
+        "Alternate picking is simple: keep moving in a continuous down/up motion. This makes the pick direction easy to work out; beats are picked with a downstroke, the &'s are picked with an up-stroke. It does not matter which string is picked next, the pick direction should always be moving in a steady pendulum like motion.",
       ],
       lessons: {
         'Single & Adjacent Strings': {
@@ -1691,7 +1692,7 @@ export const descriptions = {
     'Economy Picking': {
       title: 'Part 2: Economy Picking',
       description: [
-        'In economy picking (as defined in this method) the pick always goes strait to each string, and sweeps are used when two or more strings can be played consecutively with one motion.',
+        'In economy picking (as defined in this method) the pick always goes strait to each string, and sweeps are used when two or more strings can be played consecutively with one motion.'
       ],
       lessons: {
         'Adjacent Strings': {
@@ -1721,6 +1722,8 @@ export const descriptions = {
       description: [
         [
           'Cross picking was a way to simulate 3 string banjo rolls. Sweeps are a part of cross picking, but where economy picking goes directly to each string, in cross picking each string is picked in the direction of the next string.',
+          'This means always looking ahead to where the next string is. ',
+          'Though crosspicking is most associated with bluegrass music, it was first introduced by jazz guitarist Nick Lucas during the 1920s'
         ],
       ],
       lessons: {

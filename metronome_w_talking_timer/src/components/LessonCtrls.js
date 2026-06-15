@@ -56,7 +56,7 @@ function LessonCtrls({ setReady }) {
         setShowList={setShowSectionMenu}
         label="Section: "
         placeHolder="Choose A Section"
-        options={['Sweep Picking', 'Picking Patterns']}
+        options={['Intro', 'Sweep Picking', 'Picking Patterns']}
         currentOpt={section}
         setOption={setSection}
         disable={startLesson}
@@ -70,7 +70,7 @@ function LessonCtrls({ setReady }) {
         options={['Alternate Picking', 'Economy Picking', 'Cross Picking']}
         currentOpt={part}
         setOption={setPart}
-        disable={!section || section === 'Sweep Picking' || startLesson}
+        disable={!section || section === 'Sweep Picking' || section === 'Intro' || startLesson}
       />
 
       <Dropdown

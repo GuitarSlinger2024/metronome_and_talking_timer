@@ -44,8 +44,8 @@ function ExerciseCtrl({
 
   return (
     <div className={`${showRecords ? 'hideThis' : 'wtf'}`}>
-      {!section && <Welcome />}
-      {section && !startLesson && (
+      {(!section || section === 'Intro') && <Welcome />}
+      {section && section !== 'Intro' && !startLesson && (
         <LessonInfo
           section={section}
           part={part}
