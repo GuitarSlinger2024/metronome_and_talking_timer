@@ -20,16 +20,11 @@ function LessonInfo({ lessonInfo, setLessonInfo, bpm, getExerciseRecords })
       if (section === 'Picking Patterns' && part)
       {
         const descript = descriptions[section][part]
-        console.log({ ...descript })
         if (typeof descript.description[0] === 'object')
           descript.description = descript.description[0]
         setLessonInfo(descript)
       }
-      else
-      {
-        console.log(descriptions[section])
-        setLessonInfo(descriptions[section])
-      }
+      else setLessonInfo(descriptions[section])
     } else if (Boolean(lesson))
     {
       // if (section === 'Picking Patterns') {
